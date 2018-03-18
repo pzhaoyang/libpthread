@@ -22,7 +22,7 @@
 #include <signal.h>
 #include <resolv.h>
 
-#include <bits/pt-atomic.h>
+#include <atomic.h>
 #include <hurd/resource.h>
 
 #include <pt-internal.h>
@@ -37,7 +37,7 @@
 /* The total number of pthreads currently active.  This is defined
    here since it would be really stupid to have a threads-using
    program that doesn't call `pthread_create'.  */
-__atomic_t __pthread_total;
+unsigned int __pthread_total;
 
 
 /* The entry-point for new threads.  */
@@ -195,7 +195,7 @@ __pthread_create_internal (struct __pthread **thread,
      the number of threads from within the new thread isn't an option
      since this thread might return and call `pthread_exit' before the
      new thread runs.  */
-  __atomic_inc (&__pthread_total);
+  atomic_increment (&__pthread_total);
 
   /* Store a pointer to this thread in the thread ID lookup table.  We
      could use __thread_setid, however, we only lock for reading as no
@@ -226,7 +226,7 @@ __pthread_create_internal (struct __pthread **thread,
     __pthread_dealloc (pthread);
 
   __pthread_setid (pthread->thread, NULL);
-  __atomic_dec (&__pthread_total);
+  atomic_decrement (&__pthread_total);
  failed_sigstate:
   __pthread_sigstate_destroy (pthread);
  failed_setup:

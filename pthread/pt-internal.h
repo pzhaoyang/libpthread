@@ -26,7 +26,7 @@
 #include <assert.h>
 #include <bits/types/res_state.h>
 
-#include <bits/pt-atomic.h>
+#include <atomic.h>
 
 #include <pt-key.h>
 
@@ -76,7 +76,7 @@ struct __pthread
   /* Thread ID.  */
   pthread_t thread;
 
-  __atomic_t nr_refs;   /* Detached threads have a self reference only,
+  unsigned int nr_refs; /* Detached threads have a self reference only,
 			   while joinable threads have two references.
 			   These are used to keep the structure valid at
 			   thread destruction.  Detaching/joining a thread
@@ -171,7 +171,7 @@ __pthread_dequeue (struct __pthread *thread)
        )
 
 /* The total number of threads currently active.  */
-extern __atomic_t __pthread_total;
+extern unsigned int __pthread_total;
 
 /* The total number of thread IDs currently in use, or on the list of
    available thread IDs.  */
