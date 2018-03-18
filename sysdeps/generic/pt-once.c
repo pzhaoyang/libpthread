@@ -17,14 +17,14 @@
    not, see <http://www.gnu.org/licenses/>.  */
 
 #include <pthread.h>
-#include <bits/memory.h>
+#include <atomic.h>
 
 #include <pt-internal.h>
 
 int
 __pthread_once (pthread_once_t *once_control, void (*init_routine) (void))
 {
-  __memory_barrier ();
+  atomic_full_barrier ();
   if (once_control->__run == 0)
     {
       __pthread_spin_lock (&once_control->__lock);
@@ -32,7 +32,7 @@ __pthread_once (pthread_once_t *once_control, void (*init_routine) (void))
       if (once_control->__run == 0)
 	{
 	  init_routine ();
-	  __memory_barrier ();
+	  atomic_full_barrier ();
 	  once_control->__run = 1;
 	}
 
