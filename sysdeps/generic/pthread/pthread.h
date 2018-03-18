@@ -50,7 +50,7 @@
 
 __BEGIN_DECLS
 
-#include <pthread/pthreadtypes.h>
+#include <bits/pthreadtypes.h>
 
 #include <bits/pthread.h>
 

@@ -20,7 +20,7 @@
 #ifndef _TIMER_ROUTINES_H
 #define _TIMER_ROUTINES_H	1
 
-#include <pthread/pthreadtypes.h>
+#include <bits/pthreadtypes.h>
 
 /* Compare two pthread_attr_t thread attributes for exact equality.
    Returns 1 if they are equal, otherwise zero if they are not equal
