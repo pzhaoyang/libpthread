@@ -591,7 +591,7 @@ pthread_spin_unlock (pthread_spinlock_t *__lock)
 
 #if defined __USE_UNIX98 || defined __USE_XOPEN2K
 
-#include <bits/rwlock-attr.h>
+#include <bits/types/struct___pthread_rwlockattr.h>
 
 /* Initialize rwlock attribute object in *ATTR to the default
    values.  */

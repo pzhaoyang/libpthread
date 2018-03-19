@@ -104,7 +104,7 @@ typedef __pthread_spinlock_t pthread_spinlock_t;
 
 #if defined __USE_UNIX98 || defined __USE_XOPEN2K
 
-#include <bits/rwlock-attr.h>
+#include <bits/types/struct___pthread_rwlockattr.h>
 typedef struct __pthread_rwlockattr pthread_rwlockattr_t;
 
 #include <bits/rwlock.h>

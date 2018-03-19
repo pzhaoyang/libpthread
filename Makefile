@@ -161,7 +161,7 @@ headers :=				\
               bits/types/struct___pthread_once.h	\
               bits/types/struct___pthread_mutexattr.h	\
               bits/rwlock.h			\
-              bits/rwlock-attr.h		\
+              bits/types/struct___pthread_rwlockattr.h	\
 	      bits/semaphore.h
 
 distribute :=
