@@ -122,7 +122,7 @@ typedef struct __pthread_barrier pthread_barrier_t;
 
 #endif /* __USE_XOPEN2K */
 
-#include <bits/thread-specific.h>
+#include <bits/types/__pthread_key.h>
 typedef __pthread_key pthread_key_t;
 
 #include <bits/types/struct___pthread_once.h>

@@ -776,7 +776,7 @@ extern int pthread_barrier_wait (pthread_barrier_t *__barrier)
 
 /* Thread specific data.  */
 
-#include <bits/thread-specific.h>
+#include <bits/types/__pthread_key.h>
 
 /* Create a thread specific data key in KEY visible to all threads.
    On thread destruction, DESTRUCTOR shall be called with the thread

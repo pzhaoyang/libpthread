@@ -16,9 +16,9 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_THREAD_SPECIFIC_H
-#define _BITS_THREAD_SPECIFIC_H	1
+#ifndef _BITS_TYPES___PTHREAD_KEY_H
+#define _BITS_TYPES___PTHREAD_KEY_H	1
 
 typedef int __pthread_key;
 
-#endif /* bits/thread-specific.h */
+#endif /* bits/types/__pthread_key.h */
