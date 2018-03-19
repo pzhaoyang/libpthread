@@ -88,7 +88,7 @@ enum __pthread_mutex_robustness
 #include <bits/mutex-attr.h>
 typedef struct __pthread_mutexattr pthread_mutexattr_t;
 
-#include <bits/mutex.h>
+#include <bits/types/struct___pthread_mutex.h>
 typedef struct __pthread_mutex pthread_mutex_t;
 
 #include <bits/condition-attr.h>

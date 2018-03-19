@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_MUTEX_H
-#define _BITS_MUTEX_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_MUTEX_H
+#define _BITS_TYPES_STRUCT___PTHREAD_MUTEX_H	1
 
 #include <bits/mutex-attr.h>
 
@@ -46,4 +46,4 @@ struct __pthread_mutex
 #define __PTHREAD_RECURSIVE_MUTEX_INITIALIZER   \
   { 0, 0, 0, 0, __PTHREAD_MUTEX_RECURSIVE + 1, 0, 0, 0 }
 
-#endif /* bits/mutex.h */
+#endif /* bits/types/struct___pthread_mutex.h */

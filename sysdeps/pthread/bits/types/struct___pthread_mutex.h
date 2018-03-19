@@ -18,8 +18,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_MUTEX_H
-#define _BITS_MUTEX_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_MUTEX_H
+#define _BITS_TYPES_STRUCT___PTHREAD_MUTEX_H	1
 
 #include <bits/types/__pthread_spinlock_t.h>
 #include <bits/mutex-attr.h>
@@ -59,4 +59,4 @@ struct __pthread_mutex
     { __PTHREAD_SPIN_LOCK_INITIALIZER, __PTHREAD_SPIN_LOCK_INITIALIZER, 0, 0,	\
 	__PTHREAD_RECURSIVE_MUTEXATTR, 0, 0, 0 }
 
-#endif /* bits/mutex.h */
+#endif /* bits/types/struct___pthread_mutex.h */

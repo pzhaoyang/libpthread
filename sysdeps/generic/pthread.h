@@ -363,7 +363,7 @@ extern int pthread_mutexattr_settype(pthread_mutexattr_t *__attr,
 
 /* Mutexes.  */
 
-#include <bits/mutex.h>
+#include <bits/types/struct___pthread_mutex.h>
 
 #define PTHREAD_MUTEX_INITIALIZER __PTHREAD_MUTEX_INITIALIZER
 /* Static initializer for recursive mutexes.  */
