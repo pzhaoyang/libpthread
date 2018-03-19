@@ -59,7 +59,6 @@ enum pthread_state
 #endif
 
 #if !(IS_IN (libpthread))
-#ifdef ENABLE_TLS
 /* Type of the TCB.  */
 typedef struct
 {
@@ -67,7 +66,6 @@ typedef struct
   void *dtv;			/* Vector of pointers to TLS data.  */
   thread_t self;		/* This thread's control port.  */
 } tcbhead_t;
-#endif /* ENABLE_TLS */
 #endif /* ! IS_IN (libpthread) */
 
 /* This structure describes a POSIX thread.  */
@@ -117,9 +115,7 @@ struct __pthread
 
   PTHREAD_SYSDEP_MEMBERS
 
-#ifdef ENABLE_TLS
   tcbhead_t *tcb;
-#endif /* ENABLE_TLS */
 
   /* Queue links.  Since PREVP is used to determine if a thread has been
      awaken, it must be protected by the queue lock.  */

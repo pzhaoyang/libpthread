@@ -190,7 +190,6 @@ SYSDEP_PATH = $(srcdir)/sysdeps/$(MICROKERNEL)/hurd/i386	\
 VPATH += $(SYSDEP_PATH)
 
 CPPFLAGS += \
-	  -DENABLE_TLS					\
 	  $(addprefix -I, $(SYSDEP_PATH))
 
 CFLAGS-lockfile.c = -D_IO_MTSAFE_IO

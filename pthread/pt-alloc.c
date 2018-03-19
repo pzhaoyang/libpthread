@@ -69,9 +69,7 @@ initialize_pthread (struct __pthread *new)
 
   memset (&new->res_state, '\0', sizeof (new->res_state));
 
-#ifdef ENABLE_TLS
   new->tcb = NULL;
-#endif
 
   new->next = 0;
   new->prevp = 0;
@@ -111,13 +109,11 @@ __pthread_alloc (struct __pthread **pthread)
 
   if (new)
     {
-#ifdef ENABLE_TLS
       if (new->tcb)
 	{
 	  /* Drop old values */
 	  _dl_deallocate_tls (new->tcb, 1);
 	}
-#endif /* ENABLE_TLS */
 
       err = initialize_pthread (new);
       if (! err)

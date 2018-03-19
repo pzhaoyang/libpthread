@@ -44,10 +44,8 @@ unsigned int __pthread_total;
 static void
 entry_point (struct __pthread *self, void *(*start_routine)(void *), void *arg)
 {
-#ifdef ENABLE_TLS
   ___pthread_self = self;
   __resp = &self->res_state;
-#endif
 
 #if IS_IN (libpthread)
   /* Initialize pointers to locale data.  */
@@ -147,7 +145,6 @@ __pthread_create_internal (struct __pthread **thread,
   if (err)
     goto failed_thread_alloc;
 
-#ifdef ENABLE_TLS
   pthread->tcb = _dl_allocate_tls (NULL);
   if (!pthread->tcb)
     {
@@ -155,7 +152,6 @@ __pthread_create_internal (struct __pthread **thread,
       goto failed_thread_tls_alloc;
     }
   pthread->tcb->tcb = pthread->tcb;
-#endif /* ENABLE_TLS */
 
   /* And initialize the rest of the machine context.  This may include
      additional machine- and system-specific initializations that
@@ -230,11 +226,9 @@ __pthread_create_internal (struct __pthread **thread,
  failed_sigstate:
   __pthread_sigstate_destroy (pthread);
  failed_setup:
-#ifdef ENABLE_TLS
   _dl_deallocate_tls (pthread->tcb, 1);
   pthread->tcb = NULL;
  failed_thread_tls_alloc:
-#endif /* ENABLE_TLS */
   __pthread_thread_terminate (pthread);
 
   /* __pthread_thread_terminate has taken care of deallocating the stack and
