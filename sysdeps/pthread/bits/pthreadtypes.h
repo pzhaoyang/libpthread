@@ -117,7 +117,7 @@ typedef struct __pthread_rwlock pthread_rwlock_t;
 #include <bits/types/struct___pthread_barrierattr.h>
 typedef struct __pthread_barrierattr pthread_barrierattr_t;
 
-#include <bits/barrier.h>
+#include <bits/types/struct___pthread_barrier.h>
 typedef struct __pthread_barrier pthread_barrier_t;
 
 #endif /* __USE_XOPEN2K */

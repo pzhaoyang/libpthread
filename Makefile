@@ -156,7 +156,7 @@ headers :=				\
               bits/cancelation.h		\
               bits/thread-attr.h		\
               bits/types/struct___pthread_barrierattr.h	\
-              bits/barrier.h			\
+              bits/types/struct___pthread_barrier.h	\
               bits/thread-specific.h		\
               bits/once.h			\
               bits/mutex-attr.h			\

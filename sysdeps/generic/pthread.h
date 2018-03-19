@@ -750,7 +750,7 @@ extern int pthread_barrierattr_setpshared (pthread_barrierattr_t *__attr,
 
 /* Barriers.  */
 
-#include <bits/barrier.h>
+#include <bits/types/struct___pthread_barrier.h>
 
 /* Returned by pthread_barrier_wait to exactly one thread each time a
    barrier is passed.  */
