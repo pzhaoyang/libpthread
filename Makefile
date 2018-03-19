@@ -149,7 +149,7 @@ headers :=				\
               bits/pthreadtypes-arch.h		\
               bits/thread-shared-types.h	\
               bits/types/struct___pthread_mutex.h	\
-              bits/condition.h			\
+              bits/types/struct___pthread_cond.h	\
               bits/types/struct___pthread_condattr.h	\
               bits/types/__pthread_spinlock_t.h	\
               bits/spin-lock-inline.h		\

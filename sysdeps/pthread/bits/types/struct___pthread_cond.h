@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_CONDITION_H
-#define _BITS_CONDITION_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_COND_H
+#define _BITS_TYPES_STRUCT___PTHREAD_COND_H	1
 
 #include <bits/types/__pthread_spinlock_t.h>
 
@@ -35,4 +35,4 @@ struct __pthread_cond
 #define __PTHREAD_COND_INITIALIZER \
   { __PTHREAD_SPIN_LOCK_INITIALIZER, NULL, NULL, NULL, NULL }
 
-#endif /* bits/condition.h */
+#endif /* bits/types/struct___pthread_cond.h */

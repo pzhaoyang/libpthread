@@ -480,7 +480,7 @@ extern int pthread_condattr_setpshared (pthread_condattr_t *__attr,
 
 /* Condition variables.  */
 
-#include <bits/condition.h>
+#include <bits/types/struct___pthread_cond.h>
 
 #define PTHREAD_COND_INITIALIZER __PTHREAD_COND_INITIALIZER
 

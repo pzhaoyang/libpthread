@@ -94,7 +94,7 @@ typedef struct __pthread_mutex pthread_mutex_t;
 #include <bits/types/struct___pthread_condattr.h>
 typedef struct __pthread_condattr pthread_condattr_t;
 
-#include <bits/condition.h>
+#include <bits/types/struct___pthread_cond.h>
 typedef struct __pthread_cond pthread_cond_t;
 
 #ifdef __USE_XOPEN2K
