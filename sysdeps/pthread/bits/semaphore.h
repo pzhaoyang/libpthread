@@ -44,4 +44,4 @@ typedef struct __semaphore sem_t;
 #define __SEMAPHORE_INITIALIZER(pshared, value) \
   { __PTHREAD_SPIN_LOCK_INITIALIZER, NULL, (pshared), (value), NULL }
 
-#endif /* bits/mutex.h */
+#endif /* bits/semaphore.h */
