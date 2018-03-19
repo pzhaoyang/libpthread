@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_ONCE_H
-#define _BITS_ONCE_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_ONCE_H
+#define _BITS_TYPES_STRUCT___PTHREAD_ONCE_H	1
 
 #include <bits/types/__pthread_spinlock_t.h>
 
@@ -30,4 +30,4 @@ struct __pthread_once
 #define __PTHREAD_ONCE_INIT \
 	(struct __pthread_once) { 0, __PTHREAD_SPIN_LOCK_INITIALIZER }
 
-#endif /* bits/once.h */
+#endif /* bits/types/struct___pthread_once.h */

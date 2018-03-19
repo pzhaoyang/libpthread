@@ -158,7 +158,7 @@ headers :=				\
               bits/types/struct___pthread_barrierattr.h	\
               bits/types/struct___pthread_barrier.h	\
               bits/thread-specific.h		\
-              bits/once.h			\
+              bits/types/struct___pthread_once.h	\
               bits/types/struct___pthread_mutexattr.h	\
               bits/rwlock.h			\
               bits/rwlock-attr.h		\

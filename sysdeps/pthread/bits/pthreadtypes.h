@@ -125,7 +125,7 @@ typedef struct __pthread_barrier pthread_barrier_t;
 #include <bits/thread-specific.h>
 typedef __pthread_key pthread_key_t;
 
-#include <bits/once.h>
+#include <bits/types/struct___pthread_once.h>
 typedef struct __pthread_once pthread_once_t;
 
 __END_DECLS

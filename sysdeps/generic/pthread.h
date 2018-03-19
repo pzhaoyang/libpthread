@@ -799,7 +799,7 @@ extern int pthread_setspecific (pthread_key_t __key, const void *__value)
 
 /* Dynamic package initialization.  */
 
-#include <bits/once.h>
+#include <bits/types/struct___pthread_once.h>
 
 #define PTHREAD_ONCE_INIT __PTHREAD_ONCE_INIT
 
