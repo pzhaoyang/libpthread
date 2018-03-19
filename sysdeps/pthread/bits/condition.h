@@ -19,7 +19,7 @@
 #ifndef _BITS_CONDITION_H
 #define _BITS_CONDITION_H	1
 
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 
 /* User visible part of a condition variable.  */
 struct __pthread_cond

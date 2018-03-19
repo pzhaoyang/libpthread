@@ -19,7 +19,7 @@
 #ifndef _BITS_ONCE_H
 #define _BITS_ONCE_H	1
 
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 
 struct __pthread_once
 {

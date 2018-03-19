@@ -19,7 +19,7 @@
 #ifndef _BITS_RWLOCK_H
 #define _BITS_RWLOCK_H
 
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 
 /* User visible part of a rwlock.  If __held is not held and readers
    is 0, then the lock is unlocked.  If __held is held and readers is

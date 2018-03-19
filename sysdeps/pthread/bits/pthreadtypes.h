@@ -98,7 +98,7 @@ typedef struct __pthread_condattr pthread_condattr_t;
 typedef struct __pthread_cond pthread_cond_t;
 
 #ifdef __USE_XOPEN2K
-# include <bits/spin-lock.h>
+# include <bits/types/__pthread_spinlock_t.h>
 typedef __pthread_spinlock_t pthread_spinlock_t;
 #endif /* XPG6.  */
 

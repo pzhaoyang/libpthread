@@ -521,7 +521,7 @@ extern int pthread_cond_timedwait (pthread_cond_t *__restrict __cond,
 
 #ifdef __USE_XOPEN2K
 
-# include <bits/spin-lock.h>
+# include <bits/types/__pthread_spinlock_t.h>
 
 #define PTHREAD_SPINLOCK_INITIALIZER __PTHREAD_SPIN_LOCK_INITIALIZER
 

@@ -16,8 +16,8 @@
    License along with the GNU C Library;  if not, see
    <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_SPIN_LOCK_H
-#define _BITS_SPIN_LOCK_H	1
+#ifndef _BITS_TYPES___PTHREAD_SPINLOCK_T_H
+#define _BITS_TYPES___PTHREAD_SPINLOCK_T_H	1
 
 #include <features.h>
 
@@ -31,4 +31,4 @@ typedef volatile int __pthread_spinlock_t;
 
 __END_DECLS
 
-#endif /* bits/spin-lock.h */
+#endif /* bits/types/__pthread_spinlock_t.h */

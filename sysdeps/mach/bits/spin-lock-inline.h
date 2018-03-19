@@ -20,7 +20,7 @@
 #define _BITS_SPIN_LOCK_INLINE_H	1
 
 #include <features.h>
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 #include <lock-intern.h>   /* This does all the work.  */
 
 __BEGIN_DECLS
@@ -84,4 +84,4 @@ __pthread_spin_unlock (__pthread_spinlock_t *__lock)
 
 __END_DECLS
 
-#endif /* bits/spin-lock.h */
+#endif /* bits/types/__pthread_spinlock_t.h */

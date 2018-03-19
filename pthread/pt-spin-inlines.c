@@ -15,7 +15,7 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-/* <bits/spin-lock.h> declares some extern inline functions.  These
+/* <bits/types/__pthread_spinlock_t.h> declares some extern inline functions.  These
    functions are declared additionally here for use when inlining is
    not possible.  */
 

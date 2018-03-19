@@ -23,7 +23,7 @@
 #error Never include <bits/semaphore.h> directly.
 #endif
 
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 #include <bits/pthread.h>
 
 /* User visible part of a semaphore.  */

@@ -21,7 +21,7 @@
 #ifndef _BITS_MUTEX_H
 #define _BITS_MUTEX_H	1
 
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 #include <bits/mutex-attr.h>
 
 /* User visible part of a mutex.  */

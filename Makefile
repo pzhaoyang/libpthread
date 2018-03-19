@@ -151,7 +151,7 @@ headers :=				\
               bits/mutex.h			\
               bits/condition.h			\
               bits/condition-attr.h		\
-              bits/spin-lock.h			\
+              bits/types/__pthread_spinlock_t.h	\
               bits/spin-lock-inline.h		\
               bits/cancelation.h		\
               bits/thread-attr.h		\

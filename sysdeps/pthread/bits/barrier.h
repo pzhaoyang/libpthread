@@ -19,7 +19,7 @@
 #ifndef _BITS_BARRIER_H
 #define _BITS_BARRIER_H	1
 
-#include <bits/spin-lock.h>
+#include <bits/types/__pthread_spinlock_t.h>
 
 /* This structure describes the attributes of a POSIX barrier.  */
 struct __pthread_barrier
