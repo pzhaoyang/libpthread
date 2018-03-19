@@ -159,7 +159,7 @@ headers :=				\
               bits/types/struct___pthread_barrier.h	\
               bits/thread-specific.h		\
               bits/once.h			\
-              bits/mutex-attr.h			\
+              bits/types/struct___pthread_mutexattr.h	\
               bits/rwlock.h			\
               bits/rwlock-attr.h		\
 	      bits/semaphore.h

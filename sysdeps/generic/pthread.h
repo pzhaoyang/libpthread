@@ -274,7 +274,7 @@ extern pthread_t pthread_self (void) __THROW;
 #define PTHREAD_MUTEX_ROBUST __PTHREAD_MUTEX_ROBUST
 #endif
 
-#include <bits/mutex-attr.h>
+#include <bits/types/struct___pthread_mutexattr.h>
 
 /* Initialize the mutex attribute object in *ATTR to the default
    values.  */

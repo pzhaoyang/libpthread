@@ -19,7 +19,7 @@
 #ifndef _BITS_TYPES_STRUCT___PTHREAD_MUTEX_H
 #define _BITS_TYPES_STRUCT___PTHREAD_MUTEX_H	1
 
-#include <bits/mutex-attr.h>
+#include <bits/types/struct___pthread_mutexattr.h>
 
 /* User visible part of a mutex.  */
 struct __pthread_mutex

@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_MUTEX_ATTR_H
-#define _BITS_MUTEX_ATTR_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_MUTEXATTR_H
+#define _BITS_TYPES_STRUCT___PTHREAD_MUTEXATTR_H	1
 
 enum __pthread_mutex_protocol;
 enum __pthread_process_shared;
@@ -37,4 +37,4 @@ struct __pthread_mutexattr
 extern const struct __pthread_mutexattr __pthread_errorcheck_mutexattr;
 extern const struct __pthread_mutexattr __pthread_recursive_mutexattr;
 
-#endif /* bits/mutex-attr.h */
+#endif /* bits/types/struct___pthread_mutexattr.h */
