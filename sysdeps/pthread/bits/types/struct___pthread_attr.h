@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_THREAD_ATTR_H
-#define _BITS_THREAD_ATTR_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_ATTR
+#define _BITS_TYPES_STRUCT___PTHREAD_ATTR	1
 
 #include <sched.h>
 
@@ -42,4 +42,4 @@ struct __pthread_attr
   int __schedpolicy;
 };
 
-#endif /* bits/thread-attr.h */
+#endif /* bits/types/struct___pthread_attr.h */

@@ -73,7 +73,7 @@ __BEGIN_DECLS
 #define PTHREAD_CREATE_JOINABLE __PTHREAD_CREATE_JOINABLE
 #define PTHREAD_CREATE_DETACHED __PTHREAD_CREATE_DETACHED
 
-#include <bits/thread-attr.h>
+#include <bits/types/struct___pthread_attr.h>
 
 /* Initialize the thread attribute object in *ATTR to the default
    values.  */

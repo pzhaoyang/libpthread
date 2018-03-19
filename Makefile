@@ -154,7 +154,7 @@ headers :=				\
               bits/types/__pthread_spinlock_t.h	\
               bits/spin-lock-inline.h		\
               bits/cancelation.h		\
-              bits/thread-attr.h		\
+              bits/types/struct___pthread_attr.h	\
               bits/types/struct___pthread_barrierattr.h	\
               bits/types/struct___pthread_barrier.h	\
               bits/thread-specific.h		\

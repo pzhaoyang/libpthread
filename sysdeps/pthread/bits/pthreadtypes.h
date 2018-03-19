@@ -62,7 +62,7 @@ enum __pthread_detachstate
     __PTHREAD_CREATE_DETACHED
   };
 
-#include <bits/thread-attr.h>
+#include <bits/types/struct___pthread_attr.h>
 typedef struct __pthread_attr pthread_attr_t;
 
 enum __pthread_mutex_protocol
