@@ -24,15 +24,11 @@
 # include <bits/types/struct_timespec.h>
 #endif
 
-/* Get the definition for struct __semaphore.  */
+/* Get the definition for sem_t.  */
 #include <bits/semaphore.h>
 
 
 __BEGIN_DECLS
-
-#define SEM_FAILED ((void *) 0)
-
-typedef struct __semaphore sem_t;
 
 /* Initialize semaphore *SEM with value VALUE.  */
 extern int sem_init (sem_t *__sem, int __pshared, unsigned int __value)

@@ -36,6 +36,10 @@ struct __semaphore
     void *__data;
   };
 
+typedef struct __semaphore sem_t;
+
+#define SEM_FAILED ((void *) 0)
+
 /* Initializer for a semaphore.  */
 #define __SEMAPHORE_INITIALIZER(pshared, value) \
   { __PTHREAD_SPIN_LOCK_INITIALIZER, NULL, (pshared), (value), NULL }
