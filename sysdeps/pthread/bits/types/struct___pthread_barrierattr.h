@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_BARRIER_ATTR_H
-#define _BITS_BARRIER_ATTR_H	1
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_BARRIERATTR_H
+#define _BITS_TYPES_STRUCT___PTHREAD_BARRIERATTR_H	1
 
 enum __pthread_process_shared;
 
@@ -28,4 +28,4 @@ struct __pthread_barrierattr
   enum __pthread_process_shared __pshared;
 };
 
-#endif /* bits/barrier-attr.h */
+#endif /* bits/types/struct___pthread_barrierattr.h */

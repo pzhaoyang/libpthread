@@ -723,7 +723,7 @@ extern void pthread_testcancel (void);
 
 #ifdef __USE_XOPEN2K
 
-#include <bits/barrier-attr.h>
+#include <bits/types/struct___pthread_barrierattr.h>
 
 /* Initialize barrier attribute object in *ATTR to the default
    values.  */
