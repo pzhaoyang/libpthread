@@ -17,7 +17,7 @@
    not, see <http://www.gnu.org/licenses/>.  */
 
 #include <assert.h>
-#include <pthread.h>
+#include <pthreadP.h>
 
 #define	CTHREAD_KEY_INVALID (__cthread_key_t) -1
 

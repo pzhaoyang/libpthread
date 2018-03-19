@@ -9,5 +9,3 @@ static-thread-library = $(common-objpfx)htl/libpthread.a
 bounded-thread-library = $(static-thread-library)
 
 rpath-dirs += htl
-
-+includes += -I$(..)htl/include

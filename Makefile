@@ -141,7 +141,6 @@ libpthread-static-only-routines = pt-atfork
 
 headers :=				\
               pthread.h				\
-              pthread/pthread.h			\
 	      semaphore.h			\
 						\
               bits/pthread.h			\
@@ -186,8 +185,7 @@ SYSDEP_PATH = $(srcdir)/sysdeps/$(MICROKERNEL)/hurd/i386	\
 	 $(srcdir)/sysdeps/hurd					\
 	 $(srcdir)/sysdeps/generic				\
 	 $(srcdir)/sysdeps/posix				\
-	 $(srcdir)/pthread					\
-	 $(srcdir)/include
+	 $(srcdir)/pthread
 
 VPATH += $(SYSDEP_PATH)
 
