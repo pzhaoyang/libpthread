@@ -628,7 +628,7 @@ extern int pthread_rwlockattr_setkind_np (pthread_rwlockattr_t *__attr,
 
 /* rwlocks.  */
 
-#include <bits/rwlock.h>
+#include <bits/types/struct___pthread_rwlock.h>
 
 #define PTHREAD_RWLOCK_INITIALIZER __PTHREAD_RWLOCK_INITIALIZER
 /* Create a rwlock object with attributes given by ATTR and strore the

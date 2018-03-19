@@ -16,8 +16,8 @@
    License along with the GNU C Library; see the file COPYING.LIB.  If
    not, see <http://www.gnu.org/licenses/>.  */
 
-#ifndef _BITS_RWLOCK_H
-#define _BITS_RWLOCK_H
+#ifndef _BITS_TYPES_STRUCT___PTHREAD_RWLOCK_H
+#define _BITS_TYPES_STRUCT___PTHREAD_RWLOCK_H
 
 #include <bits/types/__pthread_spinlock_t.h>
 
@@ -42,4 +42,4 @@ struct __pthread_rwlock
     { __PTHREAD_SPIN_LOCK_INITIALIZER, __PTHREAD_SPIN_LOCK_INITIALIZER, 0, 0, 0, 0, 0 }
 
 
-#endif /* bits/rwlock.h */
+#endif /* bits/types/struct___pthread_rwlock.h */
