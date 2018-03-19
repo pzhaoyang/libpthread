@@ -440,7 +440,7 @@ extern int pthread_mutex_consistent_np (pthread_mutex_t *__mtxp)
 
 /* Condition attributes.  */
 
-#include <bits/condition-attr.h>
+#include <bits/types/struct___pthread_condattr.h>
 
 /* Initialize the condition attribute in *ATTR to the default
    values.  */

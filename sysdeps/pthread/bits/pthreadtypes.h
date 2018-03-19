@@ -91,7 +91,7 @@ typedef struct __pthread_mutexattr pthread_mutexattr_t;
 #include <bits/types/struct___pthread_mutex.h>
 typedef struct __pthread_mutex pthread_mutex_t;
 
-#include <bits/condition-attr.h>
+#include <bits/types/struct___pthread_condattr.h>
 typedef struct __pthread_condattr pthread_condattr_t;
 
 #include <bits/condition.h>
