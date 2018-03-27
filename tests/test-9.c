@@ -20,9 +20,9 @@ thr (void *arg)
 
   foo = pthread_self ();
 
-  for (i = 0; i < 500; i ++)
+  for (i = 0; i < 500; i++)
     pthread_mutex_lock (arg);
-  for (i = 0; i < 500; i ++)
+  for (i = 0; i < 500; i++)
     pthread_mutex_unlock (arg);
 
   assert (foo == pthread_self ());
@@ -62,14 +62,14 @@ main (int argc, char **argv)
   pthread_mutex_unlock (&mutex);
   pthread_mutex_unlock (&mutex);
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       err = pthread_create (&tid[i], 0, thr, &mutex);
       if (err)
 	error (1, err, "pthread_create (%d)", i);
     }
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       void *ret;
 

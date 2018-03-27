@@ -28,16 +28,16 @@ work (int iter)
   printf ("work/%d: pre-setspecific: %p,%p\n", iter, value1, value2);
   assert (value1 == NULL);
   assert (value2 == NULL);
-  err = pthread_setspecific (key1, (void *)(0x100 + iter));
+  err = pthread_setspecific (key1, (void *) (0x100 + iter));
   assert (err == 0);
-  err = pthread_setspecific (key2, (void *)(0x200 + iter));
+  err = pthread_setspecific (key2, (void *) (0x200 + iter));
   assert (err == 0);
 
   value1 = pthread_getspecific (key1);
   value2 = pthread_getspecific (key2);
   printf ("work/%d: post-setspecific: %p,%p\n", iter, value1, value2);
-  assert (value1 == (void *)(0x100 + iter));
-  assert (value2 == (void *)(0x200 + iter));
+  assert (value1 == (void *) (0x100 + iter));
+  assert (value2 == (void *) (0x200 + iter));
 
   err = pthread_key_delete (key1);
   assert (err == 0);

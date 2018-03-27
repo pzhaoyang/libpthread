@@ -35,7 +35,7 @@ main (int argc, char **argv)
   printf ("End wait @ %d\n", (int) after.tv_sec);
 
   diff = after.tv_sec * 1000000 + after.tv_usec
-    - before.tv_sec * 1000000 - before.tv_usec;
+      - before.tv_sec * 1000000 - before.tv_usec;
 
   if (diff < 900000 || diff > 1100000)
     error (1, EGRATUITOUS, "pthread_mutex_timedlock waited %d us", diff);

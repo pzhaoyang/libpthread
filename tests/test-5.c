@@ -14,7 +14,7 @@
 void *
 thr (void *arg)
 {
-  * (int *)0 = 0;
+  *(int *) 0 = 0;
   return 0;
 }
 

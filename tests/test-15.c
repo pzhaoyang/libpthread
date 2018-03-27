@@ -38,11 +38,10 @@ test (void *arg)
 
   gettimeofday (&after, 0);
 
-  printf ("Thread %d ending wait @ %d\n", pthread_self (),
-	  (int) after.tv_sec);
+  printf ("Thread %d ending wait @ %d\n", pthread_self (), (int) after.tv_sec);
 
   diff = after.tv_sec * 1000000 + after.tv_usec
-    - before.tv_sec * 1000000 - before.tv_usec;
+      - before.tv_sec * 1000000 - before.tv_usec;
 
   if (diff < 900000 || diff > 1100000)
     error (1, EGRATUITOUS, "pthread_mutex_timedlock waited %d us", diff);
@@ -65,14 +64,14 @@ main (int argc, char **argv)
   err = pthread_rwlock_wrlock (&rwlock);
   assert (err == 0);
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       err = pthread_create (&tid[i], 0, test, (void *) i);
       if (err)
 	error (1, err, "pthread_create");
     }
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       void *ret;
 

@@ -37,7 +37,7 @@ test (void *x)
     {
       err = pthread_key_create (&k[i], &d);
       if (err != 0)
-        error (1, err, "pthread_key_create %d", i);
+	error (1, err, "pthread_key_create %d", i);
     }
 
   for (i = 0; i < N_k; i += 1)
@@ -45,7 +45,7 @@ test (void *x)
       k_v[i] = i;
       err = pthread_setspecific (k[i], &k_v[i]);
       if (err != 0)
-        error (1, err, "pthread_setspecific %d", i);
+	error (1, err, "pthread_setspecific %d", i);
     }
 
   /* Delete every even key.  */
@@ -53,7 +53,7 @@ test (void *x)
     {
       err = pthread_key_delete (k[i]);
       if (err != 0)
-        error (1, err, "pthread_key_delete %d", i);
+	error (1, err, "pthread_key_delete %d", i);
     }
 
   v = 1;
@@ -63,7 +63,8 @@ test (void *x)
 }
 
 
-int main(void)
+int
+main (void)
 {
   pthread_t tid;
   int err;
@@ -72,7 +73,7 @@ int main(void)
   if (err != 0)
     error (1, err, "pthread_create");
 
-  err = pthread_join(tid, NULL);
+  err = pthread_join (tid, NULL);
   if (err)
     error (1, err, "pthread_join");
 

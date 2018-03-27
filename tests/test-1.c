@@ -26,7 +26,7 @@ main (int argc, char **argv)
   pthread_t tid[THREADS];
   pthread_mutex_t mutex[THREADS];
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       pthread_mutex_init (&mutex[i], 0);
       pthread_mutex_lock (&mutex[i]);
@@ -36,7 +36,7 @@ main (int argc, char **argv)
       sched_yield ();
     }
 
-  for (i = THREADS - 1; i >= 0; i --)
+  for (i = THREADS - 1; i >= 0; i--)
     {
       void *ret;
       pthread_mutex_unlock (&mutex[i]);

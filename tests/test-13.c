@@ -57,7 +57,7 @@ main (int argc, char **argv)
   assert (err == ETIMEDOUT);
 
   diff = after.tv_sec * 1000000 + after.tv_usec
-    - before.tv_sec * 1000000 - before.tv_usec;
+      - before.tv_sec * 1000000 - before.tv_usec;
 
   if (diff < 900000 || diff > 1100000)
     error (1, EGRATUITOUS, "pthread_cond_timedwait waited %d us", diff);

@@ -49,10 +49,10 @@ main (int argc, char **argv)
   if (err)
     error (1, err, "pthread_barrier_init");
 
-  for (j = 0; j < WAITS; j ++)
+  for (j = 0; j < WAITS; j++)
     {
 
-      for (i = 0; i < THREADS; i ++)
+      for (i = 0; i < THREADS; i++)
 	{
 	  err = pthread_create (&tid[i], 0, dowait, &barrier);
 	  if (err)
@@ -62,10 +62,10 @@ main (int argc, char **argv)
       printf ("Manager will now call pthread_barrier_wait.\n");
 
       havesyncs
-	= pthread_barrier_wait (&barrier) == PTHREAD_BARRIER_SERIAL_THREAD
-	? 1 : 0;
+	  = pthread_barrier_wait (&barrier) == PTHREAD_BARRIER_SERIAL_THREAD
+	  ? 1 : 0;
 
-      for (i = THREADS - 1; i >= 0; i --)
+      for (i = THREADS - 1; i >= 0; i--)
 	{
 	  void *ret;
 	  err = pthread_join (tid[i], &ret);
@@ -78,11 +78,11 @@ main (int argc, char **argv)
 	      break;
 
 	    case PTHREAD_BARRIER_SERIAL_THREAD:
-	      havesyncs ++;
+	      havesyncs++;
 	      break;
 
 	    default:
-	      assert (! "Unknown value returned from pthread_barrier_wait.");
+	      assert (!"Unknown value returned from pthread_barrier_wait.");
 	      break;
 	    }
 	}

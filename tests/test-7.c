@@ -17,13 +17,14 @@ thr (void *arg)
   error_t err;
   int i;
 
-  for (i = 0; i < KEYS; i ++)
+  for (i = 0; i < KEYS; i++)
     {
       printf ("pthread_getspecific(%d).\n", key[i]);
       assert (pthread_getspecific (key[i]) == NULL);
       printf ("pthread_setspecific(%d, %d).\n", key[i], pthread_self ());
       err = pthread_setspecific (key[i], (void *) pthread_self ());
-      printf ("pthread_setspecific(%d, %d) => %d.\n", key[i], pthread_self (), err);
+      printf ("pthread_setspecific(%d, %d) => %d.\n", key[i], pthread_self (),
+	      err);
       assert_perror (err);
     }
 
@@ -38,24 +39,24 @@ main (int argc, char **argv)
   pthread_t tid[THREADS];
 
   void des (void *val)
-    {
-      assert ((pthread_t) val == pthread_self ());
-    }
+  {
+    assert ((pthread_t) val == pthread_self ());
+  }
 
   assert (pthread_getspecific ((pthread_key_t) 0) == NULL);
   assert (pthread_setspecific ((pthread_key_t) 0, (void *) 0x1) == EINVAL);
 
-  for (i = 0; i < KEYS; i ++)
+  for (i = 0; i < KEYS; i++)
     err = pthread_key_create (&key[i], des);
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       err = pthread_create (&tid[i], 0, thr, 0);
       if (err)
 	error (1, err, "pthread_create (%d)", i);
     }
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       void *ret;
 

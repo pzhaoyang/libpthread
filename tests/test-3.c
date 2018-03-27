@@ -36,14 +36,14 @@ main (int argc, char *argv[])
 
 #define TEST(foo, rv, v) TEST1(foo, rv, v)
 
-  TEST(inheritsched, &i, i);
-  TEST(schedparam, &sp, &sp);
-  TEST(schedpolicy, &i, i);
-  TEST(scope, &i, i);
-  TEST(stackaddr, &p, p);
-  TEST(detachstate, &i, i);
-  TEST(guardsize, &sz, sz);
-  TEST(stacksize, &sz, sz);
+  TEST (inheritsched, &i, i);
+  TEST (schedparam, &sp, &sp);
+  TEST (schedpolicy, &i, i);
+  TEST (scope, &i, i);
+  TEST (stackaddr, &p, p);
+  TEST (detachstate, &i, i);
+  TEST (guardsize, &sz, sz);
+  TEST (stacksize, &sz, sz);
 
   err = pthread_attr_getstack (&attr, &p, &sz);
   assert_perror (err);

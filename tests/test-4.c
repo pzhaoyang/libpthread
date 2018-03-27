@@ -18,7 +18,7 @@ thr (void *arg)
   char *foo;
 
   foo = alloca (3 * stacksize / 4);
-  for (i = 0; i < sizeof foo; i ++)
+  for (i = 0; i < sizeof foo; i++)
     foo[i] = -1;
 
   return (void *) 1;

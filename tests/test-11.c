@@ -20,7 +20,7 @@ test1 (void *arg)
   pthread_rwlock_t *lock = arg;
   int i;
 
-  for (i = 0; i < 200; i ++)
+  for (i = 0; i < 200; i++)
     {
       err = pthread_rwlock_rdlock (lock);
       assert (err == 0);
@@ -75,31 +75,31 @@ main (int argc, char **argv)
 
   /* Now test the lock.  */
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       err = pthread_create (&tid[i], 0, test1, &lock);
       if (err)
 	error (1, err, "pthread_create");
     }
 
-  for (i = 0; i < 10; i ++)
+  for (i = 0; i < 10; i++)
     {
       sched_yield ();
 
       /* Get a write lock.  */
       pthread_rwlock_wrlock (&lock);
       /* Increment a and b giving other threads a chance to run in
-	 between.  */
+         between.  */
       sched_yield ();
-      a ++;
+      a++;
       sched_yield ();
-      b ++;
+      b++;
       sched_yield ();
       /* Unlock.  */
       pthread_rwlock_unlock (&lock);
     }
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       err = pthread_join (tid[i], &ret);
       if (err)

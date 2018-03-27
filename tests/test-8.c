@@ -13,7 +13,7 @@ int var;
 void
 inc_var (void)
 {
-  var ++;
+  var++;
 }
 
 void *
@@ -21,7 +21,7 @@ thr (void *arg)
 {
   int i;
 
-  for (i = 0; i < 500; i ++)
+  for (i = 0; i < 500; i++)
     pthread_once (&inc_var_once, inc_var);
 
   return 0;
@@ -34,7 +34,7 @@ main (int argc, char **argv)
   int i;
   pthread_t tid[THREADS];
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       err = pthread_create (&tid[i], 0, thr, 0);
       if (err)
@@ -43,7 +43,7 @@ main (int argc, char **argv)
 
   assert (thr (0) == 0);
 
-  for (i = 0; i < THREADS; i ++)
+  for (i = 0; i < THREADS; i++)
     {
       void *ret;
 
