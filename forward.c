@@ -29,28 +29,28 @@ struct pthread_functions __libc_pthread_functions attribute_hidden;
 int __libc_pthread_functions_init attribute_hidden;
 
 
-# define FORWARD2(name, rettype, decl, params, defaction) \
+#define FORWARD2(name, rettype, decl, params, defaction) \
 rettype									      \
 name decl								      \
 {									      \
-  if (!__libc_pthread_functions_init)			      \
+  if (!__libc_pthread_functions_init)					      \
     defaction;								      \
 									      \
-  return PTHFCT_CALL (ptr_##name, params);			      \
+  return PTHFCT_CALL (ptr_##name, params);				      \
 }
 
 /* Same as FORWARD2, only without return.  */
-# define FORWARD_NORETURN(name, rettype, decl, params, defaction) \
+#define FORWARD_NORETURN(name, rettype, decl, params, defaction) \
 rettype									      \
 name decl								      \
 {									      \
-  if (!__libc_pthread_functions_init)			      \
+  if (!__libc_pthread_functions_init)					      \
     defaction;								      \
 									      \
-  PTHFCT_CALL (ptr_##name, params);			      \
+  PTHFCT_CALL (ptr_##name, params);					      \
 }
 
-# define FORWARD(name, decl, params, defretval) \
+#define FORWARD(name, decl, params, defretval) \
   FORWARD2 (name, int, decl, params, return defretval)
 
 FORWARD (pthread_attr_destroy, (pthread_attr_t *attr), (attr), 0)
@@ -107,7 +107,8 @@ FORWARD (pthread_equal, (pthread_t thread1, pthread_t thread2),
 
 
 /* Use an alias to avoid warning, as pthread_exit is declared noreturn.  */
-FORWARD_NORETURN (__pthread_exit, void, (void *retval), (retval), exit (EXIT_SUCCESS))
+FORWARD_NORETURN (__pthread_exit, void, (void *retval), (retval),
+		  exit (EXIT_SUCCESS))
 strong_alias (__pthread_exit, pthread_exit);
 
 
@@ -133,19 +134,21 @@ FORWARD (pthread_mutex_unlock, (pthread_mutex_t *mutex), (mutex), 0)
 FORWARD2 (pthread_self, pthread_t, (void), (), return 0)
 
 
-FORWARD (__pthread_setcancelstate, (int state, int *oldstate), (state, oldstate),
-	 0)
+FORWARD (__pthread_setcancelstate, (int state, int *oldstate),
+	 (state, oldstate), 0)
 strong_alias (__pthread_setcancelstate, pthread_setcancelstate);
 
 FORWARD (pthread_setcanceltype, (int type, int *oldtype), (type, oldtype), 0)
 
 struct __pthread_cancelation_handler *dummy_list;
-FORWARD2 (__pthread_get_cleanup_stack, struct __pthread_cancelation_handler **, (void), (), return &dummy_list);
+FORWARD2 (__pthread_get_cleanup_stack, struct __pthread_cancelation_handler **,
+	  (void), (), return &dummy_list);
 
 
 /* Fork interaction */
 
-struct atfork {
+struct atfork
+{
   void (*prepare) (void);
   void (*parent) (void);
   void (*child) (void);
@@ -155,7 +158,7 @@ struct atfork {
 };
 
 /* TODO: better locking */
-__libc_lock_define_initialized(static, atfork_lock);
+__libc_lock_define_initialized (static, atfork_lock);
 static struct atfork *fork_handlers, *fork_last_handler;
 
 static void
@@ -171,7 +174,7 @@ atfork_pthread_prepare (void)
   if (!last_handler)
     return;
 
-  while(1)
+  while (1)
     {
       if (last_handler->prepare != NULL)
 	last_handler->prepare ();
@@ -219,11 +222,10 @@ atfork_pthread_child (void)
 text_set_element (_hurd_atfork_child_hook, atfork_pthread_child);
 
 int
-__register_atfork (
-    void (*prepare) (void),
-    void (*parent) (void),
-    void (*child) (void),
-    void *dso_handle)
+__register_atfork (void (*prepare) (void),
+		   void (*parent) (void),
+		   void (*child) (void),
+		   void *dso_handle)
 {
   struct atfork *new = malloc (sizeof (*new));
   if (!new)
