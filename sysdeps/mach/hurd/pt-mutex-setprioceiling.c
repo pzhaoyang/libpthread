@@ -23,9 +23,12 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int pthread_mutex_setprioceiling (pthread_mutex_t *mtxp, int cl, int *prp)
+int
+pthread_mutex_setprioceiling (pthread_mutex_t *mtxp, int cl, int *prp)
 {
-  (void)mtxp; (void)cl; (void)prp;
+  (void) mtxp;
+  (void) cl;
+  (void) prp;
   return (ENOSYS);
 }
 

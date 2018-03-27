@@ -23,10 +23,10 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int pthread_mutexattr_setpshared (pthread_mutexattr_t *attrp, int pshared)
+int
+pthread_mutexattr_setpshared (pthread_mutexattr_t *attrp, int pshared)
 {
-  if (pshared != PTHREAD_PROCESS_PRIVATE &&
-      pshared != PTHREAD_PROCESS_SHARED)
+  if (pshared != PTHREAD_PROCESS_PRIVATE && pshared != PTHREAD_PROCESS_SHARED)
     return (EINVAL);
 
   attrp->__pshared = pshared;

@@ -23,7 +23,8 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int pthread_mutexattr_getprotocol (const pthread_mutexattr_t *attrp, int *ptp)
+int
+pthread_mutexattr_getprotocol (const pthread_mutexattr_t *attrp, int *ptp)
 {
   *ptp = attrp->__protocol;
   return (0);

@@ -23,10 +23,11 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int _pthread_mutex_destroy (pthread_mutex_t *mtxp)
+int
+_pthread_mutex_destroy (pthread_mutex_t *mtxp)
 {
   atomic_read_barrier ();
-  if (*(volatile unsigned int *)&mtxp->__lock != 0)
+  if (*(volatile unsigned int *) &mtxp->__lock != 0)
     return (EBUSY);
 
   mtxp->__type = -1;

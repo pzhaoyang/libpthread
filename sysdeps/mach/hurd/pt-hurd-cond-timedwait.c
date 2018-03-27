@@ -24,7 +24,8 @@
 
 extern int __pthread_hurd_cond_timedwait_internal (pthread_cond_t *cond,
 						   pthread_mutex_t *mutex,
-						   const struct timespec *abstime);
+						   const struct timespec
+						   *abstime);
 
 int
 __pthread_hurd_cond_timedwait_np (pthread_cond_t *cond,
@@ -51,22 +52,22 @@ __pthread_hurd_cond_timedwait_internal (pthread_cond_t *cond,
      We wake up our thread if it's still blocking or about to block, so it will
      progress and notice the cancellation flag.  */
   void cancel_me (void)
-    {
-      int unblock;
+  {
+    int unblock;
 
-      __pthread_spin_lock (&cond->__lock);
-      /* The thread only needs to be awaken if it's blocking or about to block.
-	 If it was already unblocked, it's not queued any more.  */
-      unblock = self->prevp != NULL;
-      if (unblock)
-	__pthread_dequeue (self);
-      __pthread_spin_unlock (&cond->__lock);
+    __pthread_spin_lock (&cond->__lock);
+    /* The thread only needs to be awaken if it's blocking or about to block.
+       If it was already unblocked, it's not queued any more.  */
+    unblock = self->prevp != NULL;
+    if (unblock)
+      __pthread_dequeue (self);
+    __pthread_spin_unlock (&cond->__lock);
 
-      if (unblock)
-	__pthread_wakeup (self);
-    }
+    if (unblock)
+      __pthread_wakeup (self);
+  }
 
-  assert (ss->intr_port == MACH_PORT_NULL); /* Sanity check for signal bugs. */
+  assert (ss->intr_port == MACH_PORT_NULL);	/* Sanity check for signal bugs. */
 
   if (abstime && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
     return EINVAL;
@@ -119,7 +120,7 @@ __pthread_hurd_cond_timedwait_internal (pthread_cond_t *cond,
 	}
 
       /* As it was done when enqueueing, prevent hurd_thread_cancel from
-	 suspending us while the condition lock is held.  */
+         suspending us while the condition lock is held.  */
       __spin_lock (&ss->lock);
       __pthread_spin_lock (&cond->__lock);
       if (self->prevp == NULL)

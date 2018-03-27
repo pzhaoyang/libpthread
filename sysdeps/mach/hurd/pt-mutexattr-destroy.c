@@ -23,9 +23,11 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int __pthread_mutexattr_destroy (pthread_mutexattr_t *attrp)
+int
+__pthread_mutexattr_destroy (pthread_mutexattr_t *attrp)
 {
-  (void)attrp;
+  (void) attrp;
   return (0);
 }
+
 weak_alias (__pthread_mutexattr_destroy, pthread_mutexattr_destroy)

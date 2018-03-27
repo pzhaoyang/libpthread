@@ -23,10 +23,10 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int pthread_mutexattr_setrobust (pthread_mutexattr_t *attrp, int robust)
+int
+pthread_mutexattr_setrobust (pthread_mutexattr_t *attrp, int robust)
 {
-  if (robust != PTHREAD_MUTEX_ROBUST &&
-      robust != PTHREAD_MUTEX_STALLED)
+  if (robust != PTHREAD_MUTEX_ROBUST && robust != PTHREAD_MUTEX_STALLED)
     return (EINVAL);
 
   attrp->__prioceiling |= robust;

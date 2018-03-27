@@ -23,7 +23,8 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int __pthread_mutexattr_settype (pthread_mutexattr_t *attrp, int type)
+int
+__pthread_mutexattr_settype (pthread_mutexattr_t *attrp, int type)
 {
   if (type < 0 || type > __PTHREAD_MUTEX_RECURSIVE)
     return (EINVAL);

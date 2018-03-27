@@ -32,7 +32,7 @@ static void *init_routine (void);
 
 /* OK, the name of this variable isn't really appropriate, but I don't
    want to change it yet.  */
-void *(*_cthread_init_routine)(void) = &init_routine;
+void *(*_cthread_init_routine) (void) = &init_routine;
 
 /* This function is called from the Hurd-specific startup code.  It
    should return a new stack pointer for the main thread.  The caller
@@ -54,11 +54,11 @@ _init_routine (void *stack)
   if (stack)
     {
       /* We are getting initialized due to dlopening a library using libpthread
-	 while the main program was not linked against libpthread.  */
+         while the main program was not linked against libpthread.  */
       /* Avoid allocating another stack */
       attrp = &attr;
-      pthread_attr_init(attrp);
-      pthread_attr_setstack(attrp, stack, __vm_page_size);
+      pthread_attr_init (attrp);
+      pthread_attr_setstack (attrp, stack, __vm_page_size);
     }
 
   /* Create the pthread structure for the main thread (i.e. us).  */
@@ -90,7 +90,9 @@ init_routine (void)
 }
 
 #ifdef SHARED
-__attribute__ ((constructor)) static void dynamic_init_routine(void)
+__attribute__ ((constructor))
+static void
+dynamic_init_routine (void)
 {
   _init_routine (__libc_stack_end);
 }

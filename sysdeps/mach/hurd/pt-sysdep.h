@@ -48,7 +48,7 @@ extern __thread struct __pthread *___pthread_self;
          })
 
 extern inline void
-__attribute__((__always_inline__))
+__attribute__ ((__always_inline__))
 __pthread_stack_dealloc (void *stackaddr, size_t stacksize)
 {
   __vm_deallocate (__mach_task_self (), (vm_offset_t) stackaddr, stacksize);
@@ -58,9 +58,8 @@ __pthread_stack_dealloc (void *stackaddr, size_t stacksize)
    its stack pointer to SP if SET_IP is true, and its thread pointer
    to TP if SET_TP is true.  */
 extern int __thread_set_pcsptp (thread_t thread,
-			      int set_pc, void *pc,
-			      int set_sp, void *sp,
-			      int set_tp, void *tp);
+				int set_pc, void *pc,
+				int set_sp, void *sp, int set_tp, void *tp);
 
 
 #endif /* pt-sysdep.h */

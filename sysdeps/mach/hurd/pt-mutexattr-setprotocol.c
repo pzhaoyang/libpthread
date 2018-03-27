@@ -23,10 +23,11 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int pthread_mutexattr_setprotocol (pthread_mutexattr_t *attrp, int proto)
+int
+pthread_mutexattr_setprotocol (pthread_mutexattr_t *attrp, int proto)
 {
-  (void)attrp;
+  (void) attrp;
   return (proto == PTHREAD_PRIO_NONE ? 0 :
-    proto != PTHREAD_PRIO_INHERIT &&
-    proto != PTHREAD_PRIO_PROTECT ? EINVAL : ENOTSUP);
+	  proto != PTHREAD_PRIO_INHERIT &&
+	  proto != PTHREAD_PRIO_PROTECT ? EINVAL : ENOTSUP);
 }

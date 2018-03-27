@@ -26,8 +26,7 @@
 
 error_t
 __pthread_sigstate (struct __pthread *thread, int how,
-		    const sigset_t *set, sigset_t *oset,
-		    int clear_pending)
+		    const sigset_t *set, sigset_t *oset, int clear_pending)
 {
   error_t err = 0;
   struct hurd_sigstate *ss;
@@ -64,13 +63,13 @@ __pthread_sigstate (struct __pthread *thread, int how,
       ss->blocked &= ~_SIG_CANT_MASK;
     }
 
-  if (! err && clear_pending)
+  if (!err && clear_pending)
     __sigemptyset (&ss->pending);
 
   pending = _hurd_sigstate_pending (ss) & ~ss->blocked;
   _hurd_sigstate_unlock (ss);
 
-  if (! err && pending)
+  if (!err && pending)
     /* Send a message to the signal thread so it
        will wake up and check for pending signals.  */
     __msg_sig_post (_hurd_msgport, 0, 0, __mach_task_self ());

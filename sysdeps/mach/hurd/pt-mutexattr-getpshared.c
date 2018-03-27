@@ -23,7 +23,8 @@
 #include "pt-mutex.h"
 #include <hurdlock.h>
 
-int pthread_mutexattr_getpshared (const pthread_mutexattr_t *attrp, int *outp)
+int
+pthread_mutexattr_getpshared (const pthread_mutexattr_t *attrp, int *outp)
 {
   *outp = attrp->__pshared;
   return (0);
