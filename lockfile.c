@@ -38,12 +38,12 @@ _cthreads_ftrylockfile (_IO_FILE *fp)
   return __libc_lock_trylock_recursive (*fp->_lock);
 }
 
-# undef 	_IO_flockfile
-# undef 	_IO_funlockfile
-# undef 	_IO_ftrylockfile
-# undef		flockfile
-# undef		funlockfile
-# undef		ftrylockfile
+#undef	_IO_flockfile
+#undef	_IO_funlockfile
+#undef	_IO_ftrylockfile
+#undef	flockfile
+#undef	funlockfile
+#undef	ftrylockfile
 
 void _IO_flockfile (_IO_FILE *)
      __attribute__ ((alias ("_cthreads_flockfile")));
