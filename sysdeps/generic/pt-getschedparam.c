@@ -21,7 +21,7 @@
 
 int
 __pthread_getschedparam (pthread_t thread, int *policy,
-		       struct sched_param *param)
+			 struct sched_param *param)
 {
   *policy = SCHED_OTHER;
   param->sched_priority = 0;

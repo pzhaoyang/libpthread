@@ -46,14 +46,14 @@ __pthread_rwlock_timedrdlock_internal (struct __pthread_rwlock *rwlock,
     }
   else
     /* Lock is held, but is held by a reader?  */
-    if (rwlock->__readers > 0)
-      /* Just add ourself to number of readers.  */
-      {
-	assert (rwlock->__readerqueue == 0);
-	rwlock->__readers ++;
-	__pthread_spin_unlock (&rwlock->__lock);
-	return 0;
-      }
+  if (rwlock->__readers > 0)
+    /* Just add ourself to number of readers.  */
+    {
+      assert (rwlock->__readerqueue == 0);
+      rwlock->__readers++;
+      __pthread_spin_unlock (&rwlock->__lock);
+      return 0;
+    }
 
   /* The lock is busy.  */
 
@@ -79,7 +79,7 @@ __pthread_rwlock_timedrdlock_internal (struct __pthread_rwlock *rwlock,
     }
 
   __pthread_spin_lock (&rwlock->__lock);
-  if (! self->prevp)
+  if (!self->prevp)
     /* Another thread removed us from the queue, which means a wakeup message
        has been sent.  It was either consumed while we were blocking, or
        queued after we timed out and before we acquired the rwlock lock, in
@@ -88,7 +88,7 @@ __pthread_rwlock_timedrdlock_internal (struct __pthread_rwlock *rwlock,
   else
     {
       /* We're still in the queue.  Noone attempted to wake us up, i.e. we
-	 timed out.  */
+         timed out.  */
       __pthread_dequeue (self);
       drain = 0;
     }
@@ -113,7 +113,7 @@ __pthread_rwlock_timedrdlock_internal (struct __pthread_rwlock *rwlock,
 
 int
 __pthread_rwlock_timedrdlock (struct __pthread_rwlock *rwlock,
-			    const struct timespec *abstime)
+			      const struct timespec *abstime)
 {
   return __pthread_rwlock_timedrdlock_internal (rwlock, abstime);
 }

@@ -28,7 +28,7 @@ __sem_trywait (sem_t *sem)
   if (sem->__value > 0)
     /* Successful down.  */
     {
-      sem->__value --;
+      sem->__value--;
       __pthread_spin_unlock (&sem->__lock);
       return 0;
     }

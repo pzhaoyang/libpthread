@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_barrierattr_setpshared (pthread_barrierattr_t *attr,
-				int pshared)
+pthread_barrierattr_setpshared (pthread_barrierattr_t *attr, int pshared)
 {
   switch (pshared)
     {

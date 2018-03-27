@@ -21,8 +21,7 @@
 
 int
 __pthread_attr_getstack (const pthread_attr_t *attr,
-		       void **stackaddr,
-		       size_t *stacksize)
+			 void **stackaddr, size_t * stacksize)
 {
   pthread_attr_getstackaddr (attr, stackaddr);
   pthread_attr_getstacksize (attr, stacksize);

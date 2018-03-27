@@ -28,13 +28,13 @@
    performance reason.  One could use the access functions to get the
    values of all the fields of the attribute structure.  */
 static inline int
-thread_attr_compare (const pthread_attr_t *left, const pthread_attr_t *right)
+thread_attr_compare (const pthread_attr_t * left, const pthread_attr_t * right)
 {
   struct __pthread_attr *ileft = (struct __pthread_attr *) left;
   struct __pthread_attr *iright = (struct __pthread_attr *) right;
 
   return (ileft->__schedparam.sched_priority
-	      == iright->__schedparam.sched_priority
+	    == iright->__schedparam.sched_priority
 	  && ileft->__stackaddr == iright->__stackaddr
 	  && ileft->__stacksize == iright->__stacksize
 	  && ileft->__guardsize == iright->__guardsize
@@ -44,4 +44,4 @@ thread_attr_compare (const pthread_attr_t *left, const pthread_attr_t *right)
 	  && ileft->__schedpolicy == iright->__schedpolicy);
 }
 
-#endif	/* timer_routines.h */
+#endif /* timer_routines.h */

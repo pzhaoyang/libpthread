@@ -37,7 +37,7 @@ pthread_key_delete (pthread_key_t key)
       int i;
 
       __pthread_key_destructors[key] = PTHREAD_KEY_INVALID;
-      __pthread_key_invalid_count ++;
+      __pthread_key_invalid_count++;
 
       __pthread_rwlock_rdlock (&__pthread_threads_lock);
       for (i = 0; i < __pthread_num_threads; ++i)

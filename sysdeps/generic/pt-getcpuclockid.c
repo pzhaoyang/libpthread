@@ -29,6 +29,7 @@ pthread_getcpuclockid (pthread_t thread, clockid_t *clock)
   return 0;
 #else
   return ENOSYS;
-stub_warning (pthread_getcpuclockid)
 #endif
 }
+
+stub_warning (pthread_getcpuclockid)

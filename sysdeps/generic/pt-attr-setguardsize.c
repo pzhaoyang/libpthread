@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_attr_setguardsize (pthread_attr_t *attr,
-			   size_t guardsize)
+pthread_attr_setguardsize (pthread_attr_t *attr, size_t guardsize)
 {
   attr->__guardsize = guardsize;
   return 0;

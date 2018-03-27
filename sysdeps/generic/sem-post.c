@@ -30,13 +30,13 @@ __sem_post (sem_t *sem)
   if (sem->__value > 0)
     /* Do a quick up.  */
     {
-      assert (! sem->__queue);
-      sem->__value ++;
+      assert (!sem->__queue);
+      sem->__value++;
       __pthread_spin_unlock (&sem->__lock);
       return 0;
     }
 
-  if (! sem->__queue)
+  if (!sem->__queue)
     /* No one waiting.  */
     {
       sem->__value = 1;

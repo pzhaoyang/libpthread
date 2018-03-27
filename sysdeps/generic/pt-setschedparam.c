@@ -21,7 +21,7 @@
 
 int
 __pthread_setschedparam (pthread_t thread, int policy,
-		       const struct sched_param *param)
+			 const struct sched_param *param)
 {
   return ENOSYS;
 }

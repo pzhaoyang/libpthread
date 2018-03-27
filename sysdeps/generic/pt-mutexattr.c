@@ -19,24 +19,21 @@
 #include <pthread.h>
 #include <pt-internal.h>
 
-const struct __pthread_mutexattr __pthread_default_mutexattr =
-{
+const struct __pthread_mutexattr __pthread_default_mutexattr = {
   __prioceiling: 0,
   __protocol: PTHREAD_PRIO_NONE,
   __pshared: PTHREAD_PROCESS_PRIVATE,
   __mutex_type: PTHREAD_MUTEX_DEFAULT
 };
 
-const struct __pthread_mutexattr __pthread_errorcheck_mutexattr =
-{
+const struct __pthread_mutexattr __pthread_errorcheck_mutexattr = {
   __prioceiling: 0,
   __protocol: PTHREAD_PRIO_NONE,
   __pshared: PTHREAD_PROCESS_PRIVATE,
   __mutex_type: PTHREAD_MUTEX_ERRORCHECK
 };
 
-const struct __pthread_mutexattr __pthread_recursive_mutexattr =
-{
+const struct __pthread_mutexattr __pthread_recursive_mutexattr = {
   __prioceiling: 0,
   __protocol: PTHREAD_PRIO_NONE,
   __pshared: PTHREAD_PROCESS_PRIVATE,

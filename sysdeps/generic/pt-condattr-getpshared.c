@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_condattr_getpshared (const pthread_condattr_t *attr,
-			     int *pshared)
+pthread_condattr_getpshared (const pthread_condattr_t *attr, int *pshared)
 {
   *pshared = attr->__pshared;
   return 0;

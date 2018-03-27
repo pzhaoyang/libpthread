@@ -26,7 +26,7 @@ _pthread_rwlock_init (pthread_rwlock_t *rwlock,
 {
   *rwlock = (pthread_rwlock_t) __PTHREAD_RWLOCK_INITIALIZER;
 
-  if (! attr
+  if (!attr
       || memcmp (attr, &__pthread_default_rwlockattr, sizeof (*attr) == 0))
     /* Use the default attributes.  */
     return 0;
@@ -34,7 +34,7 @@ _pthread_rwlock_init (pthread_rwlock_t *rwlock,
   /* Non-default attributes.  */
 
   rwlock->__attr = malloc (sizeof *attr);
-  if (! rwlock->__attr)
+  if (!rwlock->__attr)
     return ENOMEM;
 
   *rwlock->__attr = *attr;

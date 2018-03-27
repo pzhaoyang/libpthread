@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_mutex_getprioceiling (const pthread_mutex_t *mutex,
-			      int *prioceiling)
+pthread_mutex_getprioceiling (const pthread_mutex_t *mutex, int *prioceiling)
 {
   return ENOSYS;
 }

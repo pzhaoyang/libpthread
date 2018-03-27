@@ -35,7 +35,7 @@ __pthread_rwlock_unlock (pthread_rwlock_t *rwlock)
   if (rwlock->__readers > 1)
     /* There are other readers.  */
     {
-      rwlock->__readers --;
+      rwlock->__readers--;
       __pthread_spin_unlock (&rwlock->__lock);
       return 0;
     }
@@ -54,7 +54,7 @@ __pthread_rwlock_unlock (pthread_rwlock_t *rwlock)
       __pthread_dequeue (wakeup);
 
       /* We do not unlock RWLOCK->held: we are transferring the ownership
-	 to the thread that we are waking up.  */
+         to the thread that we are waking up.  */
 
       __pthread_spin_unlock (&rwlock->__lock);
       __pthread_wakeup (wakeup);
@@ -67,21 +67,21 @@ __pthread_rwlock_unlock (pthread_rwlock_t *rwlock)
       unsigned n = 0;
 
       __pthread_queue_iterate (rwlock->__readerqueue, wakeup)
-        n ++;
+	n++;
 
       {
 	struct __pthread *wakeups[n];
 	unsigned i = 0;
 
 	__pthread_dequeuing_iterate (rwlock->__readerqueue, wakeup)
-	    wakeups[i ++] = wakeup;
+	  wakeups[i++] = wakeup;
 
 	rwlock->__readers += n;
 	rwlock->__readerqueue = 0;
 
 	__pthread_spin_unlock (&rwlock->__lock);
 
-	for (i = 0; i < n; i ++)
+	for (i = 0; i < n; i++)
 	  __pthread_wakeup (wakeups[i]);
       }
 

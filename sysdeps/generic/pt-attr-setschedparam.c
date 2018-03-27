@@ -24,10 +24,9 @@
 
 int
 __pthread_attr_setschedparam (pthread_attr_t *attr,
-			    const struct sched_param *param)
+			      const struct sched_param *param)
 {
-  if (memcmp (param, &__pthread_default_attr.__schedparam,
-	      sizeof *param) == 0)
+  if (memcmp (param, &__pthread_default_attr.__schedparam, sizeof *param) == 0)
     {
       memcpy (&attr->__schedparam, param, sizeof *param);
       return 0;

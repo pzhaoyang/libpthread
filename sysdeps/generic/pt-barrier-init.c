@@ -24,8 +24,7 @@
 
 int
 pthread_barrier_init (pthread_barrier_t *barrier,
-		      const pthread_barrierattr_t *attr,
-		      unsigned count)
+		      const pthread_barrierattr_t *attr, unsigned count)
 {
   if (count == 0)
     return EINVAL;
@@ -36,7 +35,7 @@ pthread_barrier_init (pthread_barrier_t *barrier,
   barrier->__pending = count;
   barrier->__count = count;
 
-  if (! attr
+  if (!attr
       || memcmp (attr, &__pthread_default_barrierattr, sizeof (*attr) == 0))
     /* Use the default attributes.  */
     return 0;
@@ -44,7 +43,7 @@ pthread_barrier_init (pthread_barrier_t *barrier,
   /* Non-default attributes.  */
 
   barrier->__attr = malloc (sizeof *attr);
-  if (! barrier->__attr)
+  if (!barrier->__attr)
     return ENOMEM;
 
   *barrier->__attr = *attr;

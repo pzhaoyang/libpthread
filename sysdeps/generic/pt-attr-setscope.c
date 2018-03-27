@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-__pthread_attr_setscope (pthread_attr_t *attr,
-		       int contentionscope)
+__pthread_attr_setscope (pthread_attr_t *attr, int contentionscope)
 {
   if (contentionscope == __pthread_default_attr.__contentionscope)
     {

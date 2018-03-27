@@ -28,7 +28,7 @@ __pthread_destroy_specific (struct __pthread *thread)
   int seen_one;
 
   /* Check if there is any thread specific data.  */
-  if (! thread->thread_specifics)
+  if (!thread->thread_specifics)
     return;
 
   __pthread_key_lock_ready ();
@@ -40,7 +40,8 @@ __pthread_destroy_specific (struct __pthread *thread)
 
       __pthread_mutex_lock (&__pthread_key_lock);
 
-      for (i = 0; i < __pthread_key_count && i < thread->thread_specifics_size; i ++)
+      for (i = 0; i < __pthread_key_count && i < thread->thread_specifics_size;
+	   i++)
 	{
 	  void *value;
 
@@ -62,11 +63,11 @@ __pthread_destroy_specific (struct __pthread *thread)
 
       __pthread_mutex_unlock (&__pthread_key_lock);
 
-      if (! seen_one)
+      if (!seen_one)
 	break;
 
       /* This may take a very long time.  Let those blocking on
-	 pthread_key_create or pthread_key_delete make progress.  */
+         pthread_key_create or pthread_key_delete make progress.  */
       sched_yield ();
     }
 

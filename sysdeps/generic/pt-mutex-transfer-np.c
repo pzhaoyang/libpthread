@@ -31,7 +31,7 @@ __pthread_mutex_transfer_np (struct __pthread_mutex *mutex, pthread_t tid)
   struct __pthread *thread = __pthread_getid (tid);
   const struct __pthread_mutexattr *attr = mutex->__attr;
 
-  if (! thread)
+  if (!thread)
     return ESRCH;
 
   if (thread == _pthread_self ())

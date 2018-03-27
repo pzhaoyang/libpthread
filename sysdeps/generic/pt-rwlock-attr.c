@@ -19,7 +19,6 @@
 #include <pthread.h>
 #include <pt-internal.h>
 
-const struct __pthread_rwlockattr __pthread_default_rwlockattr =
-{
+const struct __pthread_rwlockattr __pthread_default_rwlockattr = {
   __pshared: PTHREAD_PROCESS_PRIVATE
 };

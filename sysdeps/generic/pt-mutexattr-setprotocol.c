@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_mutexattr_setprotocol (pthread_mutexattr_t *attr,
-			       int protocol)
+pthread_mutexattr_setprotocol (pthread_mutexattr_t *attr, int protocol)
 {
   if (protocol == __pthread_default_mutexattr.__protocol)
     {

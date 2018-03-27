@@ -22,9 +22,7 @@
 #include <pt-internal.h>
 
 int
-pthread_attr_setstack (pthread_attr_t *attr,
-		       void *stackaddr,
-		       size_t stacksize)
+pthread_attr_setstack (pthread_attr_t *attr, void *stackaddr, size_t stacksize)
 {
   int err;
   size_t s;

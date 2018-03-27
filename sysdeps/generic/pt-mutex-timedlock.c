@@ -51,7 +51,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
 	   initialized, in particular, before the main thread has a
 	   TCB.  */
 	{
-	  assert (! mutex->__owner);
+	  assert (!mutex->__owner);
 	  mutex->__owner = _pthread_self ();
 	}
 #endif
@@ -82,7 +82,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
   self = _pthread_self ();
   assert (self);
 
-  if (! attr || attr->__mutex_type == PTHREAD_MUTEX_NORMAL)
+  if (!attr || attr->__mutex_type == PTHREAD_MUTEX_NORMAL)
     {
 #if defined(ALWAYS_TRACK_MUTEX_OWNER)
       assert (mutex->__owner != self);
@@ -103,7 +103,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
 	case PTHREAD_MUTEX_RECURSIVE:
 	  if (mutex->__owner == self)
 	    {
-	      mutex->__locks ++;
+	      mutex->__locks++;
 	      __pthread_spin_unlock (&mutex->__lock);
 	      return 0;
 	    }
@@ -136,7 +136,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
     }
 
   __pthread_spin_lock (&mutex->__lock);
-  if (! self->prevp)
+  if (!self->prevp)
     /* Another thread removed us from the queue, which means a wakeup message
        has been sent.  It was either consumed while we were blocking, or
        queued after we timed out and before we acquired the mutex lock, in
@@ -145,7 +145,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
   else
     {
       /* We're still in the queue.  Noone attempted to wake us up, i.e. we
-	 timed out.  */
+         timed out.  */
       __pthread_dequeue (self);
       drain = 0;
     }

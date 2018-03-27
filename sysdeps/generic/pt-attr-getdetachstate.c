@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-__pthread_attr_getdetachstate (const pthread_attr_t *attr,
-			     int *detachstate)
+__pthread_attr_getdetachstate (const pthread_attr_t *attr, int *detachstate)
 {
   *detachstate = attr->__detachstate;
   return 0;

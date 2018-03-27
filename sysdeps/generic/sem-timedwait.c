@@ -34,7 +34,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
   if (sem->__value > 0)
     /* Successful down.  */
     {
-      sem->__value --;
+      sem->__value--;
       __pthread_spin_unlock (&sem->__lock);
       return 0;
     }
@@ -61,7 +61,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
     }
 
   __pthread_spin_lock (&sem->__lock);
-  if (! self->prevp)
+  if (!self->prevp)
     /* Another thread removed us from the queue, which means a wakeup message
        has been sent.  It was either consumed while we were blocking, or
        queued after we timed out and before we acquired the semaphore lock, in
@@ -70,7 +70,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
   else
     {
       /* We're still in the queue.  Noone attempted to wake us up, i.e. we
-	 timed out.  */
+         timed out.  */
       __pthread_dequeue (self);
       drain = 0;
     }
@@ -90,8 +90,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
 }
 
 int
-__sem_timedwait (sem_t *restrict sem,
-		 const struct timespec *restrict timeout)
+__sem_timedwait (sem_t *restrict sem, const struct timespec *restrict timeout)
 {
   return __sem_timedwait_internal (sem, timeout);
 }

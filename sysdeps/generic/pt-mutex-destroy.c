@@ -26,7 +26,7 @@ int
 _pthread_mutex_destroy (pthread_mutex_t *mutex)
 {
   if (mutex->__attr == __PTHREAD_ERRORCHECK_MUTEXATTR
-   || mutex->__attr == __PTHREAD_RECURSIVE_MUTEXATTR)
+      || mutex->__attr == __PTHREAD_RECURSIVE_MUTEXATTR)
     /* Static attributes.  */
     ;
   else

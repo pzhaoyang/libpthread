@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-__pthread_attr_setinheritsched (pthread_attr_t *attr,
-			      int inheritsched)
+__pthread_attr_setinheritsched (pthread_attr_t *attr, int inheritsched)
 {
   switch (inheritsched)
     {

@@ -55,22 +55,22 @@ __pthread_key_lock_ready (void)
   static pthread_once_t o = PTHREAD_ONCE_INIT;
 
   void do_init (void)
-    {
-      int err;
-      pthread_mutexattr_t attr;
+  {
+    int err;
+    pthread_mutexattr_t attr;
 
-      err = __pthread_mutexattr_init (&attr);
-      assert_perror (err);
+    err = __pthread_mutexattr_init (&attr);
+    assert_perror (err);
 
-      err = __pthread_mutexattr_settype (&attr, PTHREAD_MUTEX_RECURSIVE);
-      assert_perror (err);
+    err = __pthread_mutexattr_settype (&attr, PTHREAD_MUTEX_RECURSIVE);
+    assert_perror (err);
 
-      err = _pthread_mutex_init (&__pthread_key_lock, &attr);
-      assert_perror (err);
+    err = _pthread_mutex_init (&__pthread_key_lock, &attr);
+    assert_perror (err);
 
-      err = __pthread_mutexattr_destroy (&attr);
-      assert_perror (err);
-    }
+    err = __pthread_mutexattr_destroy (&attr);
+    assert_perror (err);
+  }
 
   __pthread_once (&o, do_init);
 }

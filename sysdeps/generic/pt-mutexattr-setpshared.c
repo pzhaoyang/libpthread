@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_mutexattr_setpshared (pthread_mutexattr_t *attr,
-			      int pshared)
+pthread_mutexattr_setpshared (pthread_mutexattr_t *attr, int pshared)
 {
   switch (pshared)
     {

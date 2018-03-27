@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_rwlockattr_setpshared (pthread_rwlockattr_t *attr,
-			       int pshared)
+pthread_rwlockattr_setpshared (pthread_rwlockattr_t *attr, int pshared)
 {
   switch (pshared)
     {

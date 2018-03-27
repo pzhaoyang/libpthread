@@ -65,7 +65,7 @@ __pthread_rwlock_timedwrlock_internal (struct __pthread_rwlock *rwlock,
     }
 
   __pthread_spin_lock (&rwlock->__lock);
-  if (! self->prevp)
+  if (!self->prevp)
     /* Another thread removed us from the queue, which means a wakeup message
        has been sent.  It was either consumed while we were blocking, or
        queued after we timed out and before we acquired the rwlock lock, in
@@ -74,7 +74,7 @@ __pthread_rwlock_timedwrlock_internal (struct __pthread_rwlock *rwlock,
   else
     {
       /* We're still in the queue.  Noone attempted to wake us up, i.e. we
-	 timed out.  */
+         timed out.  */
       __pthread_dequeue (self);
       drain = 0;
     }
@@ -96,7 +96,7 @@ __pthread_rwlock_timedwrlock_internal (struct __pthread_rwlock *rwlock,
 
 int
 __pthread_rwlock_timedwrlock (struct __pthread_rwlock *rwlock,
-			    const struct timespec *abstime)
+			      const struct timespec *abstime)
 {
   return __pthread_rwlock_timedwrlock_internal (rwlock, abstime);
 }

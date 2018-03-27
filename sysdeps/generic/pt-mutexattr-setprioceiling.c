@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_mutexattr_setprioceiling (pthread_mutexattr_t *attr,
-				  int prioceiling)
+pthread_mutexattr_setprioceiling (pthread_mutexattr_t *attr, int prioceiling)
 {
   return ENOSYS;
 }

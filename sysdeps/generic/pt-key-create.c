@@ -39,11 +39,10 @@ __pthread_key_create (pthread_key_t *key, void (*destructor) (void *))
 
   __pthread_mutex_lock (&__pthread_key_lock);
 
- do_search:
+do_search:
   /* Use the search hint and try to find a free slot.  */
   for (; index < __pthread_key_count
-	 && __pthread_key_destructors[index] != PTHREAD_KEY_INVALID;
-       index ++)
+       && __pthread_key_destructors[index] != PTHREAD_KEY_INVALID; index++)
     ;
 
   /* See if we actually found a free element.  */
@@ -52,9 +51,9 @@ __pthread_key_create (pthread_key_t *key, void (*destructor) (void *))
       assert (__pthread_key_destructors[index] == PTHREAD_KEY_INVALID);
       assert (__pthread_key_invalid_count > 0);
 
-      __pthread_key_invalid_count --;
+      __pthread_key_invalid_count--;
       __pthread_key_destructors[index] = destructor;
-      *key = index ++;
+      *key = index++;
 
       __pthread_mutex_unlock (&__pthread_key_lock);
       return 0;
@@ -86,7 +85,7 @@ __pthread_key_create (pthread_key_t *key, void (*destructor) (void *))
 
 	t = realloc (__pthread_key_destructors,
 		     newsize * sizeof (*__pthread_key_destructors));
-	if (! t)
+	if (!t)
 	  {
 	    __pthread_mutex_unlock (&__pthread_key_lock);
 	    return ENOMEM;
@@ -100,8 +99,8 @@ __pthread_key_create (pthread_key_t *key, void (*destructor) (void *))
   __pthread_key_destructors[index] = destructor;
   *key = index;
 
-  index ++;
-  __pthread_key_count ++;
+  index++;
+  __pthread_key_count++;
 
   __pthread_mutex_unlock (&__pthread_key_lock);
   return 0;

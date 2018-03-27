@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_condattr_setpshared (pthread_condattr_t *attr,
-			     int pshared)
+pthread_condattr_setpshared (pthread_condattr_t *attr, int pshared)
 {
   switch (pshared)
     {

@@ -20,8 +20,7 @@
 #include <pt-internal.h>
 
 int
-pthread_mutexattr_getprotocol (const pthread_mutexattr_t *attr,
-			       int *protocol)
+pthread_mutexattr_getprotocol (const pthread_mutexattr_t *attr, int *protocol)
 {
   *protocol = attr->__protocol;
   return 0;

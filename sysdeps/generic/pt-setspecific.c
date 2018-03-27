@@ -35,7 +35,7 @@ __pthread_setspecific (pthread_key_t key, const void *value)
       int newsize = 2 * key + 1;
       void **new = realloc (self->thread_specifics,
 			    newsize * sizeof (new[0]));
-      if (! new )
+      if (!new)
 	return ENOMEM;
 
       memset (&new[self->thread_specifics_size], 0,
@@ -44,7 +44,7 @@ __pthread_setspecific (pthread_key_t key, const void *value)
       self->thread_specifics_size = newsize;
     }
 
-  self->thread_specifics[key] = (void*) value;
+  self->thread_specifics[key] = (void *) value;
   return 0;
 }
 strong_alias (__pthread_setspecific, pthread_setspecific);

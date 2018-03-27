@@ -27,5 +27,4 @@
 #if IS_IN (libpthread)
 hidden_proto (__shm_directory)
 #endif
-
-#endif  /* shm-directory.h */
+#endif /* shm-directory.h */
