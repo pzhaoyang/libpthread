@@ -26,4 +26,4 @@
   __sp__;								      \
 })
 
-#endif	/* machine-sp.h */
+#endif /* machine-sp.h */
