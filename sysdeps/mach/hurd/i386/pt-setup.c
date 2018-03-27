@@ -38,7 +38,7 @@
    Return the stack pointer for the new thread.  */
 static void *
 stack_setup (struct __pthread *thread,
-	     void *(*start_routine)(void *), void *arg)
+	     void *(*start_routine) (void *), void *arg)
 {
   error_t err;
   uintptr_t *bottom, *top;
@@ -46,8 +46,8 @@ stack_setup (struct __pthread *thread,
   /* Calculate the top of the new stack.  */
   bottom = thread->stackaddr;
   top = (uintptr_t *) ((uintptr_t) bottom + thread->stacksize
-        + ((thread->guardsize + __vm_page_size-1)
-	   / __vm_page_size) * __vm_page_size);
+		       + ((thread->guardsize + __vm_page_size - 1)
+			  / __vm_page_size) * __vm_page_size);
 
   if (start_routine)
     {
@@ -72,8 +72,9 @@ stack_setup (struct __pthread *thread,
 
 int
 __pthread_setup (struct __pthread *thread,
-		 void (*entry_point)(struct __pthread *, void *(*)(void *), void *),
-		 void *(*start_routine)(void *), void *arg)
+		 void (*entry_point) (struct __pthread *, void *(*)(void *),
+				      void *), void *(*start_routine) (void *),
+		 void *arg)
 {
   tcbhead_t *tcb;
   error_t err;
@@ -95,9 +96,9 @@ __pthread_setup (struct __pthread *thread,
   else
     {
       err = __thread_set_pcsptp (thread->kernel_thread,
-			       1, thread->mcontext.pc,
-			       1, thread->mcontext.sp,
-			       1, thread->tcb);
+				 1, thread->mcontext.pc,
+				 1, thread->mcontext.sp,
+				 1, thread->tcb);
       assert_perror (err);
       tcb = thread->tcb;
     }

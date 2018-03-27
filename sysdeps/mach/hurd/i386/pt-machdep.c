@@ -39,9 +39,9 @@
 
 int
 __thread_set_pcsptp (thread_t thread,
-		   int set_ip, void *ip,
-		   int set_sp, void *sp,
-		   int set_tp, void *tp)
+		     int set_ip, void *ip,
+		     int set_sp, void *sp,
+		     int set_tp, void *tp)
 {
   error_t err;
   struct i386_thread_state state;
@@ -58,23 +58,23 @@ __thread_set_pcsptp (thread_t thread,
     state.uesp = (unsigned int) sp;
   if (set_ip)
     state.eip = (unsigned int) ip;
-  if (set_tp) {
-    HURD_TLS_DESC_DECL(desc, tp);
-    int sel;
+  if (set_tp)
+    {
+      HURD_TLS_DESC_DECL (desc, tp);
+      int sel;
 
-    asm ("mov %%gs, %w0" : "=q" (sel) : "0" (0));
-    if (__builtin_expect (sel, 0x48) & 4) /* LDT selector */
-      err = __i386_set_ldt (thread, sel, &desc, 1);
-    else
-      err = __i386_set_gdt (thread, &sel, desc);
-    if (err)
-      return err;
-    state.gs = sel;
-  }
+    asm ("mov %%gs, %w0": "=q" (sel):"0" (0));
+      if (__builtin_expect (sel, 0x48) & 4)	/* LDT selector */
+	err = __i386_set_ldt (thread, sel, &desc, 1);
+      else
+	err = __i386_set_gdt (thread, &sel, desc);
+      if (err)
+	return err;
+      state.gs = sel;
+    }
 
   err = __thread_set_state (thread, i386_REGS_SEGS_STATE,
-			    (thread_state_t) &state,
-			    i386_THREAD_STATE_COUNT);
+			    (thread_state_t) &state, i386_THREAD_STATE_COUNT);
   if (err)
     return err;
 
