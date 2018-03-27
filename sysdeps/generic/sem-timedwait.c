@@ -61,7 +61,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
     }
 
   __pthread_spin_lock (&sem->__lock);
-  if (!self->prevp)
+  if (self->prevp == NULL)
     /* Another thread removed us from the queue, which means a wakeup message
        has been sent.  It was either consumed while we were blocking, or
        queued after we timed out and before we acquired the semaphore lock, in

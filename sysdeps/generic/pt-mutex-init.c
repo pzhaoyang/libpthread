@@ -28,16 +28,17 @@ _pthread_mutex_init (pthread_mutex_t *mutex, const pthread_mutexattr_t *attr)
 {
   *mutex = (pthread_mutex_t) __PTHREAD_MUTEX_INITIALIZER;
 
-  if (!attr || memcmp (attr, &__pthread_default_mutexattr, sizeof (*attr) == 0))
+  if (attr == NULL
+      || memcmp (attr, &__pthread_default_mutexattr, sizeof (*attr) == 0))
     /* The default attributes.  */
     return 0;
 
-  if (!mutex->__attr
+  if (mutex->__attr == NULL
       || mutex->__attr == __PTHREAD_ERRORCHECK_MUTEXATTR
       || mutex->__attr == __PTHREAD_RECURSIVE_MUTEXATTR)
     mutex->__attr = malloc (sizeof *attr);
 
-  if (!mutex->__attr)
+  if (mutex->__attr == NULL)
     return ENOMEM;
 
   *mutex->__attr = *attr;

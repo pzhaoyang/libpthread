@@ -130,7 +130,7 @@ __pthread_cond_timedwait_internal (pthread_cond_t *cond,
     }
 
   __pthread_spin_lock (&cond->__lock);
-  if (!self->prevp)
+  if (self->prevp == NULL)
     {
       /* Another thread removed us from the list of waiters, which means a
          wakeup message has been sent.  It was either consumed while we were

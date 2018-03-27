@@ -85,7 +85,7 @@ do_search:
 
 	t = realloc (__pthread_key_destructors,
 		     newsize * sizeof (*__pthread_key_destructors));
-	if (!t)
+	if (t == NULL)
 	  {
 	    __pthread_mutex_unlock (&__pthread_key_lock);
 	    return ENOMEM;

@@ -28,7 +28,7 @@ int __pthread_mutex_transfer_np (pthread_mutex_t *mtxp, pthread_t th)
   struct __pthread *self = _pthread_self ();
   struct __pthread *pt = __pthread_getid (th);
 
-  if (!pt)
+  if (pt == NULL)
     return (ESRCH);
   else if (pt == self)
     return (0);

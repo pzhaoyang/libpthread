@@ -101,13 +101,13 @@ __pthread_create_internal (struct __pthread **thread,
   setup = attr ? attr : &__pthread_default_attr;
 
   stacksize = setup->__stacksize;
-  if (!stacksize)
+  if (stacksize == 0)
     {
       struct rlimit rlim;
       __getrlimit (RLIMIT_STACK, &rlim);
       if (rlim.rlim_cur != RLIM_INFINITY)
 	stacksize = rlim.rlim_cur;
-      if (!stacksize)
+      if (stacksize == 0)
 	stacksize = PTHREAD_STACK_DEFAULT;
     }
 
@@ -146,7 +146,7 @@ __pthread_create_internal (struct __pthread **thread,
     goto failed_thread_alloc;
 
   pthread->tcb = _dl_allocate_tls (NULL);
-  if (!pthread->tcb)
+  if (pthread->tcb == NULL)
     {
       err = ENOMEM;
       goto failed_thread_tls_alloc;

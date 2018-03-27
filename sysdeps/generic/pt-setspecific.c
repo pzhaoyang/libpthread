@@ -35,7 +35,7 @@ __pthread_setspecific (pthread_key_t key, const void *value)
       int newsize = 2 * key + 1;
       void **new = realloc (self->thread_specifics,
 			    newsize * sizeof (new[0]));
-      if (!new)
+      if (new == NULL)
 	return ENOMEM;
 
       memset (&new[self->thread_specifics_size], 0,

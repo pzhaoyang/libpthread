@@ -38,7 +38,7 @@ __pthread_kill (pthread_t thread, int sig)
   ss = _hurd_thread_sigstate (pthread->kernel_thread);
   assert (ss);
 
-  if (!sig)
+  if (sig == 0)
     return 0;
 
   detail.exc = 0;

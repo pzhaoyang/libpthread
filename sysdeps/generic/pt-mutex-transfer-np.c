@@ -31,7 +31,7 @@ __pthread_mutex_transfer_np (struct __pthread_mutex *mutex, pthread_t tid)
   struct __pthread *thread = __pthread_getid (tid);
   const struct __pthread_mutexattr *attr = mutex->__attr;
 
-  if (!thread)
+  if (thread == NULL)
     return ESRCH;
 
   if (thread == _pthread_self ())
@@ -53,7 +53,7 @@ __pthread_mutex_transfer_np (struct __pthread_mutex *mutex, pthread_t tid)
 
 #ifndef NDEBUG
 # if !defined(ALWAYS_TRACK_MUTEX_OWNER)
-  if (attr && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
+  if (attr != NULL && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
 # endif
     {
       mutex->__owner = thread;

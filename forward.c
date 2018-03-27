@@ -171,7 +171,7 @@ atfork_pthread_prepare (void)
   last_handler = fork_last_handler;
   __libc_lock_unlock (atfork_lock);
 
-  if (!last_handler)
+  if (last_handler == NULL)
     return;
 
   while (1)
@@ -228,7 +228,7 @@ __register_atfork (void (*prepare) (void),
 		   void *dso_handle)
 {
   struct atfork *new = malloc (sizeof (*new));
-  if (!new)
+  if (new == NULL)
     return errno;
 
   new->prepare = prepare;
@@ -242,7 +242,7 @@ __register_atfork (void (*prepare) (void),
   if (fork_handlers)
     fork_handlers->prev = new;
   fork_handlers = new;
-  if (!fork_last_handler)
+  if (fork_last_handler == NULL)
     fork_last_handler = new;
   __libc_lock_unlock (atfork_lock);
 

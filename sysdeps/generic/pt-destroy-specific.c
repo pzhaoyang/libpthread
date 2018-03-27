@@ -28,7 +28,7 @@ __pthread_destroy_specific (struct __pthread *thread)
   int seen_one;
 
   /* Check if there is any thread specific data.  */
-  if (!thread->thread_specifics)
+  if (thread->thread_specifics == NULL)
     return;
 
   __pthread_key_lock_ready ();

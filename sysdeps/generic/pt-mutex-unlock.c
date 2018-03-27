@@ -36,7 +36,7 @@ __pthread_mutex_unlock (pthread_mutex_t *mutex)
 
   __pthread_spin_lock (&mutex->__lock);
 
-  if (!attr || attr->__mutex_type == PTHREAD_MUTEX_NORMAL)
+  if (attr == NULL || attr->__mutex_type == PTHREAD_MUTEX_NORMAL)
     {
 #if defined(ALWAYS_TRACK_MUTEX_OWNER)
 # ifndef NDEBUG
@@ -87,7 +87,7 @@ __pthread_mutex_unlock (pthread_mutex_t *mutex)
 
 #ifndef NDEBUG
 # if !defined (ALWAYS_TRACK_MUTEX_OWNER)
-  if (attr && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
+  if (attr != NULL && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
 # endif
     {
       mutex->__owner = wakeup;

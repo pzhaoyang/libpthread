@@ -44,17 +44,17 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
     /* Successfully acquired the lock.  */
     {
 #ifdef ALWAYS_TRACK_MUTEX_OWNER
-#ifndef NDEBUG
+# ifndef NDEBUG
       self = _pthread_self ();
       if (self)
 	/* The main thread may take a lock before the library is fully
 	   initialized, in particular, before the main thread has a
 	   TCB.  */
 	{
-	  assert (!mutex->__owner);
+	  assert (mutex->__owner == NULL);
 	  mutex->__owner = _pthread_self ();
 	}
-#endif
+# endif
 #endif
 
       if (attr)
@@ -82,7 +82,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
   self = _pthread_self ();
   assert (self);
 
-  if (!attr || attr->__mutex_type == PTHREAD_MUTEX_NORMAL)
+  if (attr == NULL || attr->__mutex_type == PTHREAD_MUTEX_NORMAL)
     {
 #if defined(ALWAYS_TRACK_MUTEX_OWNER)
       assert (mutex->__owner != self);
@@ -136,7 +136,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
     }
 
   __pthread_spin_lock (&mutex->__lock);
-  if (!self->prevp)
+  if (self->prevp == NULL)
     /* Another thread removed us from the queue, which means a wakeup message
        has been sent.  It was either consumed while we were blocking, or
        queued after we timed out and before we acquired the mutex lock, in

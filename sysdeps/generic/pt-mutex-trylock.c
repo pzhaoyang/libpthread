@@ -47,7 +47,7 @@ __pthread_mutex_trylock (struct __pthread_mutex *mutex)
 	   initialized, in particular, before the main thread has a
 	   TCB.  */
 	{
-	  assert (!mutex->__owner);
+	  assert (mutex->__owner == NULL);
 	  mutex->__owner = _pthread_self ();
 	}
 #endif
