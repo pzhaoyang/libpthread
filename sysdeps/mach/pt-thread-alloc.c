@@ -73,7 +73,7 @@ __pthread_thread_alloc (struct __pthread *thread)
   if (err)
     return err;
 
-  if (! do_create)
+  if (!do_create)
     {
       assert (__pthread_total == 0);
       thread->kernel_thread = __mach_thread_self ();

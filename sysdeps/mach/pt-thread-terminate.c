@@ -41,9 +41,8 @@ __pthread_thread_terminate (struct __pthread *thread)
   if (thread->stack)
     {
       stackaddr = thread->stackaddr;
-      stacksize = ((thread->guardsize + __vm_page_size-1)
-		  / __vm_page_size) * __vm_page_size
-		  + thread->stacksize;
+      stacksize = ((thread->guardsize + __vm_page_size - 1)
+		   / __vm_page_size) * __vm_page_size + thread->stacksize;
     }
   else
     {
@@ -60,8 +59,7 @@ __pthread_thread_terminate (struct __pthread *thread)
      simple routine designed not to require a reply port.  */
   self_ktid = __mach_thread_self ();
   reply_port = (self_ktid == kernel_thread)
-	       ? __mig_get_reply_port ()
-	       : MACH_PORT_NULL;
+      ? __mig_get_reply_port () : MACH_PORT_NULL;
   __mach_port_deallocate (__mach_task_self (), self_ktid);
 
   /* Finally done with the thread structure.  */

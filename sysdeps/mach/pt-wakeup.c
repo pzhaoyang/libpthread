@@ -32,6 +32,6 @@ __pthread_wakeup (struct __pthread *thread)
 
   err = __mach_msg (&thread->wakeupmsg, MACH_SEND_MSG | MACH_SEND_TIMEOUT,
 		    sizeof (thread->wakeupmsg), 0, MACH_PORT_NULL,
-		    0 , MACH_PORT_NULL);
+		    0, MACH_PORT_NULL);
   assert_perror (err);
 }

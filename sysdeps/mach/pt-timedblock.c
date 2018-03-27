@@ -29,8 +29,7 @@
 /* Block THREAD.  */
 error_t
 __pthread_timedblock (struct __pthread *thread,
-		      const struct timespec *abstime,
-		      clockid_t clock_id)
+		      const struct timespec *abstime, clockid_t clock_id)
 {
   error_t err;
   mach_msg_header_t msg;
@@ -41,11 +40,10 @@ __pthread_timedblock (struct __pthread *thread,
      relative time.  Arg.  */
 
   err = clock_gettime (clock_id, &now);
-  assert (! err);
+  assert (!err);
 
   if (now.tv_sec > abstime->tv_sec
-      || (now.tv_sec == abstime->tv_sec
-	  && now.tv_nsec > abstime->tv_nsec))
+      || (now.tv_sec == abstime->tv_sec && now.tv_nsec > abstime->tv_nsec))
     return ETIMEDOUT;
 
   timeout = (abstime->tv_sec - now.tv_sec) * 1000;

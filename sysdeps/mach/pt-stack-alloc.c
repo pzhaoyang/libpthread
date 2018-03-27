@@ -38,13 +38,12 @@ __pthread_stack_alloc (void **stackaddr, size_t stacksize)
   vm_offset_t base;
   int i = 0;
 
- get_stack:
-  i ++;
+get_stack:
+  i++;
   for (base = next_stack_base;
        base < VM_MAX_ADDRESS
-	 && __vm_allocate (__mach_task_self (), &base,
-			   stacksize, FALSE) != KERN_SUCCESS;
-       base += stacksize)
+       && __vm_allocate (__mach_task_self (), &base,
+			 stacksize, FALSE) != KERN_SUCCESS; base += stacksize)
     ;
 
   if (base >= VM_MAX_ADDRESS)
