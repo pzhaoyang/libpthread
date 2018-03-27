@@ -38,11 +38,11 @@
    here since it would be really stupid to have a threads-using
    program that doesn't call `pthread_create'.  */
 unsigned int __pthread_total;
-
 
+
 /* The entry-point for new threads.  */
 static void
-entry_point (struct __pthread *self, void *(*start_routine)(void *), void *arg)
+entry_point (struct __pthread *self, void *(*start_routine) (void *), void *arg)
 {
   ___pthread_self = self;
   __resp = &self->res_state;
@@ -64,14 +64,14 @@ entry_point (struct __pthread *self, void *(*start_routine)(void *), void *arg)
 /* Create a thread with attributes given by ATTR, executing
    START_ROUTINE with argument ARG.  */
 int
-pthread_create (pthread_t *thread, const pthread_attr_t *attr,
-		void *(*start_routine)(void *), void *arg)
+pthread_create (pthread_t * thread, const pthread_attr_t * attr,
+		void *(*start_routine) (void *), void *arg)
 {
   int err;
   struct __pthread *pthread;
 
   err = __pthread_create_internal (&pthread, attr, start_routine, arg);
-  if (! err)
+  if (!err)
     *thread = pthread->thread;
   else if (err == ENOMEM)
     err = EAGAIN;
@@ -83,8 +83,8 @@ pthread_create (pthread_t *thread, const pthread_attr_t *attr,
    pt-internal.h.  */
 int
 __pthread_create_internal (struct __pthread **thread,
-			   const pthread_attr_t *attr,
-			   void *(*start_routine)(void *), void *arg)
+			   const pthread_attr_t * attr,
+			   void *(*start_routine) (void *), void *arg)
 {
   int err;
   struct __pthread *pthread;
@@ -104,7 +104,7 @@ __pthread_create_internal (struct __pthread **thread,
   if (!stacksize)
     {
       struct rlimit rlim;
-      __getrlimit(RLIMIT_STACK, &rlim);
+      __getrlimit (RLIMIT_STACK, &rlim);
       if (rlim.rlim_cur != RLIM_INFINITY)
 	stacksize = rlim.rlim_cur;
       if (!stacksize)
@@ -120,7 +120,7 @@ __pthread_create_internal (struct __pthread **thread,
       pthread->stackaddr = setup->__stackaddr;
 
       /* If the user supplied a stack, it is not our responsibility to
-	 setup a stack guard.  */
+         setup a stack guard.  */
       pthread->guardsize = 0;
       pthread->stack = 0;
     }
@@ -128,7 +128,7 @@ __pthread_create_internal (struct __pthread **thread,
     {
       /* Allocate a stack.  */
       err = __pthread_stack_alloc (&pthread->stackaddr,
-				   ((setup->__guardsize + __vm_page_size-1)
+				   ((setup->__guardsize + __vm_page_size - 1)
 				    / __vm_page_size) * __vm_page_size
 				   + stacksize);
       if (err)
@@ -216,32 +216,31 @@ __pthread_create_internal (struct __pthread **thread,
 
   return 0;
 
- failed_starting:
+failed_starting:
   /* If joinable, a reference was added for the caller.  */
   if (pthread->state == PTHREAD_JOINABLE)
     __pthread_dealloc (pthread);
 
   __pthread_setid (pthread->thread, NULL);
   atomic_decrement (&__pthread_total);
- failed_sigstate:
+failed_sigstate:
   __pthread_sigstate_destroy (pthread);
- failed_setup:
+failed_setup:
   _dl_deallocate_tls (pthread->tcb, 1);
   pthread->tcb = NULL;
- failed_thread_tls_alloc:
+failed_thread_tls_alloc:
   __pthread_thread_terminate (pthread);
 
   /* __pthread_thread_terminate has taken care of deallocating the stack and
      the thread structure.  */
   goto failed;
- failed_thread_alloc:
+failed_thread_alloc:
   if (pthread->stack)
     __pthread_stack_dealloc (pthread->stackaddr,
-			     ((setup->__guardsize + __vm_page_size-1)
-			      / __vm_page_size) * __vm_page_size
-			     + stacksize);
- failed_stack_alloc:
+			     ((setup->__guardsize + __vm_page_size - 1)
+			      / __vm_page_size) * __vm_page_size + stacksize);
+failed_stack_alloc:
   __pthread_dealloc (pthread);
- failed:
+failed:
   return err;
 }

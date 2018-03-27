@@ -45,8 +45,8 @@ pthread_detach (pthread_t thread)
       pthread->state = PTHREAD_DETACHED;
 
       /* Broadcast the condition.  This will make threads that are
-	 waiting to join THREAD continue with hopefully disastrous
-	 consequences instead of blocking indefinitely.  */
+         waiting to join THREAD continue with hopefully disastrous
+         consequences instead of blocking indefinitely.  */
       pthread_cond_broadcast (&pthread->state_cond);
       __pthread_mutex_unlock (&pthread->state_lock);
 
@@ -57,8 +57,8 @@ pthread_detach (pthread_t thread)
       __pthread_mutex_unlock (&pthread->state_lock);
 
       /* THREAD has already exited.  PTHREAD remained after the thread
-	 exited in order to provide the exit status, but it turns out
-	 it won't be needed.  */
+         exited in order to provide the exit status, but it turns out
+         it won't be needed.  */
       __pthread_dealloc (pthread);
       break;
 

@@ -74,15 +74,15 @@ struct __pthread
   /* Thread ID.  */
   pthread_t thread;
 
-  unsigned int nr_refs; /* Detached threads have a self reference only,
-			   while joinable threads have two references.
-			   These are used to keep the structure valid at
-			   thread destruction.  Detaching/joining a thread
-			   drops a reference.  */
+  unsigned int nr_refs;		/* Detached threads have a self reference only,
+				   while joinable threads have two references.
+				   These are used to keep the structure valid at
+				   thread destruction.  Detaching/joining a thread
+				   drops a reference.  */
 
   /* Cancellation.  */
-  pthread_mutex_t cancel_lock;  /* Protect cancel_xxx members.  */
-  void (*cancel_hook)(void *);	/* Called to unblock a thread blocking
+  pthread_mutex_t cancel_lock;	/* Protect cancel_xxx members.  */
+  void (*cancel_hook) (void *);	/* Called to unblock a thread blocking
 				   in a cancellation point (namely,
 				   __pthread_cond_timedwait_internal).  */
   void *cancel_hook_arg;
@@ -209,7 +209,7 @@ extern void ___pthread_init (void);
    tid, we return the whole __pthread structure in *PTHREAD.  */
 extern int __pthread_create_internal (struct __pthread **__restrict pthread,
 				      const pthread_attr_t *__restrict attr,
-				      void *(*start_routine)(void *),
+				      void *(*start_routine) (void *),
 				      void *__restrict arg);
 
 /* Allocate a new thread structure and a pthread thread ID (but not a
@@ -233,11 +233,11 @@ extern void __pthread_stack_dealloc (void *stackaddr, size_t stacksize);
 
 /* Setup thread THREAD's context.  */
 extern int __pthread_setup (struct __pthread *__restrict thread,
-				  void (*entry_point)(struct __pthread *,
-						      void *(*)(void *),
-						      void *),
-				  void *(*start_routine)(void *),
-				  void *__restrict arg);
+			    void (*entry_point) (struct __pthread *,
+						 void *(*)(void *),
+						 void *),
+			    void *(*start_routine) (void *),
+			    void *__restrict arg);
 
 
 /* Allocate a kernel thread (and any miscellaneous system dependent

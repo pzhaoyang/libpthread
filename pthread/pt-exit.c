@@ -65,7 +65,7 @@ __pthread_exit (void *status)
   switch (self->state)
     {
     default:
-      assert (! "Consistency error: unexpected self->state");
+      assert (!"Consistency error: unexpected self->state");
       abort ();
       break;
 

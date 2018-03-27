@@ -20,7 +20,7 @@
    not possible.  */
 
 #define _FORCE_INLINES
-#define __PT_SPIN_INLINE /* empty */
+#define __PT_SPIN_INLINE	/* empty */
 
 #include <pthread.h>
 

@@ -22,8 +22,7 @@
 #include <pt-internal.h>
 
 int
-pthread_sigmask (int how, const sigset_t *set,
-		 sigset_t *oset)
+pthread_sigmask (int how, const sigset_t *set, sigset_t *oset)
 {
   struct __pthread *self = _pthread_self ();
 

@@ -30,7 +30,7 @@ __pthread_getattr_np (pthread_t thread, pthread_attr_t *attr)
 {
   struct __pthread *pthread;
 
-  pthread = __pthread_getid(thread);
+  pthread = __pthread_getid (thread);
   if (pthread == NULL)
     return ESRCH;
 
@@ -39,12 +39,12 @@ __pthread_getattr_np (pthread_t thread, pthread_attr_t *attr)
   *attr = __pthread_default_attr;
 
   attr->__stackaddr = pthread->stackaddr +
-		      ((pthread->guardsize + __vm_page_size-1)
-		       / __vm_page_size * __vm_page_size);
+      ((pthread->guardsize + __vm_page_size - 1)
+       / __vm_page_size * __vm_page_size);
   attr->__stacksize = pthread->stacksize;
   attr->__guardsize = pthread->guardsize;
   attr->__detachstate = (pthread->state == PTHREAD_DETACHED
-		       ? PTHREAD_CREATE_DETACHED : PTHREAD_CREATE_JOINABLE);
+			 ? PTHREAD_CREATE_DETACHED : PTHREAD_CREATE_JOINABLE);
 
   return 0;
 }

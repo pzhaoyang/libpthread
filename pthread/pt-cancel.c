@@ -27,7 +27,7 @@ pthread_cancel (pthread_t t)
   struct __pthread *p;
 
   p = __pthread_getid (t);
-  if (! p)
+  if (p == NULL)
     return ESRCH;
 
   __pthread_mutex_lock (&p->cancel_lock);

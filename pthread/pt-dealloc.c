@@ -35,7 +35,7 @@ __pthread_dealloc (struct __pthread *pthread)
 {
   assert (pthread->state != PTHREAD_TERMINATED);
 
-  if (! atomic_decrement_and_test (&pthread->nr_refs))
+  if (!atomic_decrement_and_test (&pthread->nr_refs))
     return;
 
   /* Withdraw this thread from the thread ID lookup table.  */

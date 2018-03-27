@@ -95,10 +95,10 @@ __pthread_alloc (struct __pthread **pthread)
   for (new = __pthread_free_threads; new; new = new->next)
     {
       /* There is no need to take NEW->STATE_LOCK: if NEW is on this
-	 list, then it is protected by __PTHREAD_FREE_THREADS_LOCK
-	 except in __pthread_dealloc where after it is added to the
-	 list (with the lock held), it drops the lock and then sets
-	 NEW->STATE and immediately stops using NEW.  */
+         list, then it is protected by __PTHREAD_FREE_THREADS_LOCK
+         except in __pthread_dealloc where after it is added to the
+         list (with the lock held), it drops the lock and then sets
+         NEW->STATE and immediately stops using NEW.  */
       if (new->state == PTHREAD_TERMINATED)
 	{
 	  __pthread_dequeue (new);
@@ -116,7 +116,7 @@ __pthread_alloc (struct __pthread **pthread)
 	}
 
       err = initialize_pthread (new);
-      if (! err)
+      if (!err)
 	*pthread = new;
       return err;
     }
@@ -133,7 +133,7 @@ __pthread_alloc (struct __pthread **pthread)
       return err;
     }
 
- retry:
+retry:
   __pthread_rwlock_wrlock (&__pthread_threads_lock);
 
   if (__pthread_num_threads < __pthread_max_threads)
@@ -168,7 +168,7 @@ __pthread_alloc (struct __pthread **pthread)
 
   /* Allocate a new lookup table that's twice as large.  */
   new_max_threads
-    = max_threads > 0 ? max_threads * 2 : _POSIX_THREAD_THREADS_MAX;
+      = max_threads > 0 ? max_threads * 2 : _POSIX_THREAD_THREADS_MAX;
   threads = malloc (new_max_threads * sizeof (struct __pthread *));
   if (threads == NULL)
     {
