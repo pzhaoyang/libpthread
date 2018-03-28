@@ -28,13 +28,13 @@
 
 /* User visible part of a semaphore.  */
 struct __semaphore
-  {
-    __pthread_spinlock_t __lock;
-    struct __pthread *__queue;
-    int __pshared;
-    int __value;
-    void *__data;
-  };
+{
+  __pthread_spinlock_t __lock;
+  struct __pthread *__queue;
+  int __pshared;
+  int __value;
+  void *__data;
+};
 
 typedef struct __semaphore sem_t;
 

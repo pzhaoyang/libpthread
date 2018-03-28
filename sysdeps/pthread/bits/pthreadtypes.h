@@ -30,60 +30,59 @@
 #include <bits/types.h>
 
 __BEGIN_DECLS
-
 #include <bits/pthread.h>
 typedef __pthread_t pthread_t;
 
 /* Possible values for the process shared attribute.  */
 enum __pthread_process_shared
-  {
-    __PTHREAD_PROCESS_PRIVATE = 0,
-    __PTHREAD_PROCESS_SHARED
-  };
+{
+  __PTHREAD_PROCESS_PRIVATE = 0,
+  __PTHREAD_PROCESS_SHARED
+};
 
 /* Possible values for the inheritsched attribute.  */
 enum __pthread_inheritsched
-  {
-    __PTHREAD_EXPLICIT_SCHED = 0,
-    __PTHREAD_INHERIT_SCHED
-  };
+{
+  __PTHREAD_EXPLICIT_SCHED = 0,
+  __PTHREAD_INHERIT_SCHED
+};
 
 /* Possible values for the `contentionscope' attribute.  */
 enum __pthread_contentionscope
-  {
-    __PTHREAD_SCOPE_SYSTEM = 0,
-    __PTHREAD_SCOPE_PROCESS
-  };
+{
+  __PTHREAD_SCOPE_SYSTEM = 0,
+  __PTHREAD_SCOPE_PROCESS
+};
 
 /* Possible values for the `detachstate' attribute.  */
 enum __pthread_detachstate
-  {
-    __PTHREAD_CREATE_JOINABLE = 0,
-    __PTHREAD_CREATE_DETACHED
-  };
+{
+  __PTHREAD_CREATE_JOINABLE = 0,
+  __PTHREAD_CREATE_DETACHED
+};
 
 #include <bits/types/struct___pthread_attr.h>
 typedef struct __pthread_attr pthread_attr_t;
 
 enum __pthread_mutex_protocol
-  {
-    __PTHREAD_PRIO_NONE= 0,
-    __PTHREAD_PRIO_INHERIT,
-    __PTHREAD_PRIO_PROTECT
-  };
+{
+  __PTHREAD_PRIO_NONE = 0,
+  __PTHREAD_PRIO_INHERIT,
+  __PTHREAD_PRIO_PROTECT
+};
 
 enum __pthread_mutex_type
-  {
-    __PTHREAD_MUTEX_TIMED,
-    __PTHREAD_MUTEX_ERRORCHECK,
-    __PTHREAD_MUTEX_RECURSIVE
-  };
+{
+  __PTHREAD_MUTEX_TIMED,
+  __PTHREAD_MUTEX_ERRORCHECK,
+  __PTHREAD_MUTEX_RECURSIVE
+};
 
 enum __pthread_mutex_robustness
-  {
-    __PTHREAD_MUTEX_STALLED,
-    __PTHREAD_MUTEX_ROBUST = 0x100
-  };
+{
+  __PTHREAD_MUTEX_STALLED,
+  __PTHREAD_MUTEX_ROBUST = 0x100
+};
 
 #include <bits/types/struct___pthread_mutexattr.h>
 typedef struct __pthread_mutexattr pthread_mutexattr_t;
@@ -129,5 +128,4 @@ typedef __pthread_key pthread_key_t;
 typedef struct __pthread_once pthread_once_t;
 
 __END_DECLS
-
 #endif /* bits/pthreadtypes.h */

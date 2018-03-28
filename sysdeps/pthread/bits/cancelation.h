@@ -21,7 +21,7 @@
 
 struct __pthread_cancelation_handler
 {
-  void (*__handler)(void *);
+  void (*__handler) (void *);
   void *__arg;
   struct __pthread_cancelation_handler *__next;
 };
