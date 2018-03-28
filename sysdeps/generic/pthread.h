@@ -229,7 +229,7 @@ extern int pthread_detach (pthread_t __threadp);
    if they are not.  */
 extern int pthread_equal (pthread_t __t1, pthread_t __t2);
 
-# ifdef __USE_EXTERN_INLINES
+#ifdef __USE_EXTERN_INLINES
 
 __extern_inline int
 pthread_equal (pthread_t __t1, pthread_t __t2)
@@ -237,7 +237,7 @@ pthread_equal (pthread_t __t1, pthread_t __t2)
   return __pthread_equal (__t1, __t2);
 }
 
-# endif /* Use extern inlines.  */
+#endif /* Use extern inlines.  */
 
 
 /* Return the thread ID of the calling thread.  */
@@ -250,28 +250,28 @@ extern pthread_t pthread_self (void) __THROW;
 #define PTHREAD_PRIO_INHERIT_NP __PTHREAD_PRIO_INHERIT
 #define PTHREAD_PRIO_PROTECT_NP __PTHREAD_PRIO_PROTECT
 #ifdef __USE_UNIX98
-#define PTHREAD_PRIO_NONE PTHREAD_PRIO_NONE_NP
-#define PTHREAD_PRIO_INHERIT PTHREAD_PRIO_INHERIT_NP
-#define PTHREAD_PRIO_PROTECT PTHREAD_PRIO_PROTECT_NP
+# define PTHREAD_PRIO_NONE PTHREAD_PRIO_NONE_NP
+# define PTHREAD_PRIO_INHERIT PTHREAD_PRIO_INHERIT_NP
+# define PTHREAD_PRIO_PROTECT PTHREAD_PRIO_PROTECT_NP
 #endif
 
 #define PTHREAD_MUTEX_TIMED_NP __PTHREAD_MUTEX_TIMED
 #define PTHREAD_MUTEX_ERRORCHECK_NP __PTHREAD_MUTEX_ERRORCHECK
 #define PTHREAD_MUTEX_RECURSIVE_NP __PTHREAD_MUTEX_RECURSIVE
 #if defined __USE_UNIX98 || defined __USE_XOPEN2K8
-#define PTHREAD_MUTEX_NORMAL PTHREAD_MUTEX_TIMED_NP
-#define PTHREAD_MUTEX_ERRORCHECK PTHREAD_MUTEX_ERRORCHECK_NP
-#define PTHREAD_MUTEX_RECURSIVE PTHREAD_MUTEX_RECURSIVE_NP
-#define PTHREAD_MUTEX_DEFAULT PTHREAD_MUTEX_NORMAL
+# define PTHREAD_MUTEX_NORMAL PTHREAD_MUTEX_TIMED_NP
+# define PTHREAD_MUTEX_ERRORCHECK PTHREAD_MUTEX_ERRORCHECK_NP
+# define PTHREAD_MUTEX_RECURSIVE PTHREAD_MUTEX_RECURSIVE_NP
+# define PTHREAD_MUTEX_DEFAULT PTHREAD_MUTEX_NORMAL
 #endif
 #ifdef __USE_GNU
 /* For compatibility.  */
-#define PTHREAD_MUTEX_FAST_NP PTHREAD_MUTEX_TIMED_NP
+# define PTHREAD_MUTEX_FAST_NP PTHREAD_MUTEX_TIMED_NP
 #endif
 
 #ifdef __USE_XOPEN2K
-#define PTHREAD_MUTEX_STALLED __PTHREAD_MUTEX_STALLED
-#define PTHREAD_MUTEX_ROBUST __PTHREAD_MUTEX_ROBUST
+# define PTHREAD_MUTEX_STALLED __PTHREAD_MUTEX_STALLED
+# define PTHREAD_MUTEX_ROBUST __PTHREAD_MUTEX_ROBUST
 #endif
 
 #include <bits/types/struct___pthread_mutexattr.h>
@@ -523,7 +523,7 @@ extern int pthread_cond_timedwait (pthread_cond_t *__restrict __cond,
 
 # include <bits/types/__pthread_spinlock_t.h>
 
-#define PTHREAD_SPINLOCK_INITIALIZER __PTHREAD_SPIN_LOCK_INITIALIZER
+# define PTHREAD_SPINLOCK_INITIALIZER __PTHREAD_SPIN_LOCK_INITIALIZER
 
 /* Destroy the spin lock object LOCK.  */
 extern int pthread_spin_destroy (pthread_spinlock_t *__lock)
@@ -591,7 +591,7 @@ pthread_spin_unlock (pthread_spinlock_t *__lock)
 
 #if defined __USE_UNIX98 || defined __USE_XOPEN2K
 
-#include <bits/types/struct___pthread_rwlockattr.h>
+# include <bits/types/struct___pthread_rwlockattr.h>
 
 /* Initialize rwlock attribute object in *ATTR to the default
    values.  */
@@ -628,9 +628,9 @@ extern int pthread_rwlockattr_setkind_np (pthread_rwlockattr_t *__attr,
 
 /* rwlocks.  */
 
-#include <bits/types/struct___pthread_rwlock.h>
+# include <bits/types/struct___pthread_rwlock.h>
 
-#define PTHREAD_RWLOCK_INITIALIZER __PTHREAD_RWLOCK_INITIALIZER
+# define PTHREAD_RWLOCK_INITIALIZER __PTHREAD_RWLOCK_INITIALIZER
 /* Create a rwlock object with attributes given by ATTR and strore the
    result in *RWLOCK.  */
 extern int pthread_rwlock_init (pthread_rwlock_t *__restrict __rwlock,
@@ -723,7 +723,7 @@ extern void pthread_testcancel (void);
 
 #ifdef __USE_XOPEN2K
 
-#include <bits/types/struct___pthread_barrierattr.h>
+# include <bits/types/struct___pthread_barrierattr.h>
 
 /* Initialize barrier attribute object in *ATTR to the default
    values.  */
@@ -750,11 +750,11 @@ extern int pthread_barrierattr_setpshared (pthread_barrierattr_t *__attr,
 
 /* Barriers.  */
 
-#include <bits/types/struct___pthread_barrier.h>
+# include <bits/types/struct___pthread_barrier.h>
 
 /* Returned by pthread_barrier_wait to exactly one thread each time a
    barrier is passed.  */
-#define PTHREAD_BARRIER_SERIAL_THREAD -1
+# define PTHREAD_BARRIER_SERIAL_THREAD -1
 
 /* Initialize barrier BARRIER.  */
 extern int pthread_barrier_init (pthread_barrier_t *__restrict __barrier,

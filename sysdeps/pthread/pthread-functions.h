@@ -134,7 +134,7 @@ extern int __libc_pthread_functions_init attribute_hidden;
 
 void __libc_pthread_init (const struct pthread_functions *functions);
 
-# define PTHFCT_CALL(fct, params) \
+#define PTHFCT_CALL(fct, params) \
     __libc_pthread_functions.fct params
 
 #endif	/* pthread-functions.h */

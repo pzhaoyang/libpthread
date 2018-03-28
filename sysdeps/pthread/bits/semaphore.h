@@ -20,7 +20,7 @@
 #define _BITS_SEMAPHORE_H	1
 
 #ifndef _SEMAPHORE_H
-#error Never include <bits/semaphore.h> directly.
+# error Never include <bits/semaphore.h> directly.
 #endif
 
 #include <bits/types/__pthread_spinlock_t.h>

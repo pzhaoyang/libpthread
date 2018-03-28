@@ -103,20 +103,20 @@ typedef __pthread_spinlock_t pthread_spinlock_t;
 
 #if defined __USE_UNIX98 || defined __USE_XOPEN2K
 
-#include <bits/types/struct___pthread_rwlockattr.h>
+# include <bits/types/struct___pthread_rwlockattr.h>
 typedef struct __pthread_rwlockattr pthread_rwlockattr_t;
 
-#include <bits/types/struct___pthread_rwlock.h>
+# include <bits/types/struct___pthread_rwlock.h>
 typedef struct __pthread_rwlock pthread_rwlock_t;
 
 #endif /* __USE_UNIX98 || __USE_XOPEN2K */
 
 #ifdef __USE_XOPEN2K
 
-#include <bits/types/struct___pthread_barrierattr.h>
+# include <bits/types/struct___pthread_barrierattr.h>
 typedef struct __pthread_barrierattr pthread_barrierattr_t;
 
-#include <bits/types/struct___pthread_barrier.h>
+# include <bits/types/struct___pthread_barrier.h>
 typedef struct __pthread_barrier pthread_barrier_t;
 
 #endif /* __USE_XOPEN2K */
