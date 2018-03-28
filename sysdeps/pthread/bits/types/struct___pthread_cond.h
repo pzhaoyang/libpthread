@@ -23,13 +23,13 @@
 
 /* User visible part of a condition variable.  */
 struct __pthread_cond
-  {
-    __pthread_spinlock_t __lock;
-    struct __pthread *__queue;
-    struct __pthread_condattr *__attr;
-    struct __pthread_condimpl *__impl;
-    void *__data;
-  };
+{
+  __pthread_spinlock_t __lock;
+  struct __pthread *__queue;
+  struct __pthread_condattr *__attr;
+  struct __pthread_condimpl *__impl;
+  void *__data;
+};
 
 /* Initializer for a condition variable.  */
 #define __PTHREAD_COND_INITIALIZER \

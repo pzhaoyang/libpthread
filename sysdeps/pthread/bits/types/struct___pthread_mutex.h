@@ -26,21 +26,21 @@
 
 /* User visible part of a mutex.  */
 struct __pthread_mutex
-  {
-    __pthread_spinlock_t __held;
-    __pthread_spinlock_t __lock;
-    /* In cthreads, mutex_init does not initialized thre third
-       pointer, as such, we cannot rely on its value for anything.  */
-    char *__cthreadscompat1;
-    struct __pthread *__queue;
-    struct __pthread_mutexattr *__attr;
-    void *__data;
-    /*  Up to this point, we are completely compatible with cthreads
-	and what libc expects.  */
-    void *__owner;
-    unsigned __locks;
-    /* If NULL then the default attributes apply.  */
-  };
+{
+  __pthread_spinlock_t __held;
+  __pthread_spinlock_t __lock;
+  /* In cthreads, mutex_init does not initialized thre third
+     pointer, as such, we cannot rely on its value for anything.  */
+  char *__cthreadscompat1;
+  struct __pthread *__queue;
+  struct __pthread_mutexattr *__attr;
+  void *__data;
+  /*  Up to this point, we are completely compatible with cthreads
+     and what libc expects.  */
+  void *__owner;
+  unsigned __locks;
+  /* If NULL then the default attributes apply.  */
+};
 
 /* Initializer for a mutex.  N.B.  this also happens to be compatible
    with the cthread mutex initializer.  */

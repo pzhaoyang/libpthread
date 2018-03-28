@@ -25,11 +25,11 @@
 struct __pthread_barrier
 {
   __pthread_spinlock_t __lock;
-  struct __pthread *__queue; /* List of waiters.  */
-  unsigned __pending;	/* Number of that still need to wait on
-			   barrier.  */
-  unsigned __count;	/* Number of threads that must wait before
-			   barrier is passed.  */
+  struct __pthread *__queue;	/* List of waiters.  */
+  unsigned __pending;		/* Number of that still need to wait on
+				   barrier.  */
+  unsigned __count;		/* Number of threads that must wait before
+				   barrier is passed.  */
   struct __pthread_barrierattr *__attr;
   void *__data;
 };
