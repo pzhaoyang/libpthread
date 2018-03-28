@@ -42,7 +42,7 @@ __pthread_mutex_transfer_np (struct __pthread_mutex *mutex, pthread_t tid)
   if (attr == __PTHREAD_RECURSIVE_MUTEXATTR)
     attr = &__pthread_recursive_mutexattr;
 
-  if (attr && attr->__mutex_type == PTHREAD_MUTEX_ERRORCHECK)
+  if (attr != NULL && attr->__mutex_type == PTHREAD_MUTEX_ERRORCHECK)
     {
 
       if (mutex->__owner != _pthread_self ())

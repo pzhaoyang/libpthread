@@ -50,7 +50,7 @@ pthread_join (pthread_t thread, void **status)
     {
     case PTHREAD_EXITED:
       /* THREAD has already exited.  Salvage its exit status.  */
-      if (status)
+      if (status != NULL)
 	*status = pthread->status;
 
       __pthread_mutex_unlock (&pthread->state_lock);

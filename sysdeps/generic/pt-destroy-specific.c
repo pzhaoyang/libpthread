@@ -49,7 +49,7 @@ __pthread_destroy_specific (struct __pthread *thread)
 	    continue;
 
 	  value = thread->thread_specifics[i];
-	  if (value)
+	  if (value != NULL)
 	    {
 	      thread->thread_specifics[i] = 0;
 

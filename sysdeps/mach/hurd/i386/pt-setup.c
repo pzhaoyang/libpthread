@@ -49,7 +49,7 @@ stack_setup (struct __pthread *thread,
 		       + ((thread->guardsize + __vm_page_size - 1)
 			  / __vm_page_size) * __vm_page_size);
 
-  if (start_routine)
+  if (start_routine != NULL)
     {
       /* And then the call frame.  */
       top -= 3;

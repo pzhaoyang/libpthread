@@ -108,7 +108,7 @@ __pthread_cond_timedwait_internal (pthread_cond_t *cond,
          already unblocked, progressing on the return path.  */
       __pthread_spin_lock (&cond->__lock);
       __pthread_enqueue (&cond->__queue, self);
-      if (cond->__attr)
+      if (cond->__attr != NULL)
 	clock_id = cond->__attr->__clock;
       __pthread_spin_unlock (&cond->__lock);
     }
@@ -121,7 +121,7 @@ __pthread_cond_timedwait_internal (pthread_cond_t *cond,
   __pthread_mutex_unlock (mutex);
 
   /* Block the thread.  */
-  if (abstime)
+  if (abstime != NULL)
     err = __pthread_timedblock (self, abstime, clock_id);
   else
     {

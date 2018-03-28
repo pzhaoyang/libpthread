@@ -44,14 +44,14 @@ _init_routine (void *stack)
   int err;
   pthread_attr_t attr, *attrp = 0;
 
-  if (__pthread_threads)
+  if (__pthread_threads != NULL)
     /* Already initialized */
     return 0;
 
   /* Initialize the library.  */
   ___pthread_init ();
 
-  if (stack)
+  if (stack != NULL)
     {
       /* We are getting initialized due to dlopening a library using libpthread
          while the main program was not linked against libpthread.  */

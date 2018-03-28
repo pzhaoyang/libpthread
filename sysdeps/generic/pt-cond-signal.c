@@ -29,11 +29,11 @@ __pthread_cond_signal (pthread_cond_t *cond)
 
   __pthread_spin_lock (&cond->__lock);
   wakeup = cond->__queue;
-  if (wakeup)
+  if (wakeup != NULL)
     __pthread_dequeue (wakeup);
   __pthread_spin_unlock (&cond->__lock);
 
-  if (wakeup)
+  if (wakeup != NULL)
     __pthread_wakeup (wakeup);
 
   return 0;

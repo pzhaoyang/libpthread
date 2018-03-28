@@ -35,7 +35,7 @@ __pthread_setcanceltype (int type, int *oldtype)
     }
 
   __pthread_mutex_lock (&p->cancel_lock);
-  if (oldtype)
+  if (oldtype != NULL)
     *oldtype = p->cancel_type;
   p->cancel_type = type;
   __pthread_mutex_unlock (&p->cancel_lock);

@@ -46,7 +46,7 @@ __pthread_rwlock_timedwrlock_internal (struct __pthread_rwlock *rwlock,
 
   /* The lock is busy.  */
 
-  if (abstime && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
+  if (abstime != NULL && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
     return EINVAL;
 
   self = _pthread_self ();
@@ -56,7 +56,7 @@ __pthread_rwlock_timedwrlock_internal (struct __pthread_rwlock *rwlock,
   __pthread_spin_unlock (&rwlock->__lock);
 
   /* Block the thread.  */
-  if (abstime)
+  if (abstime != NULL)
     err = __pthread_timedblock (self, abstime, CLOCK_REALTIME);
   else
     {

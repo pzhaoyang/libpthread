@@ -35,7 +35,7 @@ __pthread_setcancelstate (int state, int *oldstate)
     }
 
   __pthread_mutex_lock (&p->cancel_lock);
-  if (oldstate)
+  if (oldstate != NULL)
     *oldstate = p->cancel_state;
   p->cancel_state = state;
   __pthread_mutex_unlock (&p->cancel_lock);

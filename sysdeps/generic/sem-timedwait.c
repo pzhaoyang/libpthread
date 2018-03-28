@@ -39,7 +39,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
       return 0;
     }
 
-  if (timeout && (timeout->tv_nsec < 0 || timeout->tv_nsec >= 1000000000))
+  if (timeout != NULL && (timeout->tv_nsec < 0 || timeout->tv_nsec >= 1000000000))
     {
       errno = EINVAL;
       return -1;
@@ -52,7 +52,7 @@ __sem_timedwait_internal (sem_t *restrict sem,
   __pthread_spin_unlock (&sem->__lock);
 
   /* Block the thread.  */
-  if (timeout)
+  if (timeout != NULL)
     err = __pthread_timedblock (self, timeout, CLOCK_REALTIME);
   else
     {

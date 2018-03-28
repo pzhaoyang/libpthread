@@ -40,9 +40,9 @@ __pthread_mutex_trylock (struct __pthread_mutex *mutex)
     /* Acquired the lock.  */
     {
 #if defined(ALWAYS_TRACK_MUTEX_OWNER)
-#ifndef NDEBUG
+# ifndef NDEBUG
       self = _pthread_self ();
-      if (self)
+      if (self != NULL)
 	/* The main thread may take a lock before the library is fully
 	   initialized, in particular, before the main thread has a
 	   TCB.  */
@@ -50,10 +50,10 @@ __pthread_mutex_trylock (struct __pthread_mutex *mutex)
 	  assert (mutex->__owner == NULL);
 	  mutex->__owner = _pthread_self ();
 	}
-#endif
+# endif
 #endif
 
-      if (attr)
+      if (attr != NULL)
 	switch (attr->__mutex_type)
 	  {
 	  case PTHREAD_MUTEX_NORMAL:
@@ -75,7 +75,7 @@ __pthread_mutex_trylock (struct __pthread_mutex *mutex)
 
   err = EBUSY;
 
-  if (attr)
+  if (attr != NULL)
     {
       self = _pthread_self ();
       switch (attr->__mutex_type)

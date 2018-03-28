@@ -194,7 +194,7 @@ atfork_pthread_parent (void)
   handlers = fork_handlers;
   __libc_lock_unlock (atfork_lock);
 
-  while (handlers)
+  while (handlers != NULL)
     {
       if (handlers->parent != NULL)
 	handlers->parent ();
@@ -212,7 +212,7 @@ atfork_pthread_child (void)
   handlers = fork_handlers;
   __libc_lock_unlock (atfork_lock);
 
-  while (handlers)
+  while (handlers != NULL)
     {
       if (handlers->child != NULL)
 	handlers->child ();
@@ -239,7 +239,7 @@ __register_atfork (void (*prepare) (void),
 
   __libc_lock_lock (atfork_lock);
   new->next = fork_handlers;
-  if (fork_handlers)
+  if (fork_handlers != NULL)
     fork_handlers->prev = new;
   fork_handlers = new;
   if (fork_last_handler == NULL)
@@ -256,7 +256,7 @@ __unregister_atfork (void *dso_handle)
   struct atfork **handlers, *prev = NULL, *next;
   __libc_lock_lock (atfork_lock);
   handlers = &fork_handlers;
-  while (*handlers)
+  while (*handlers != NULL)
     {
       if ((*handlers)->dso_handle == dso_handle)
 	{
@@ -268,7 +268,7 @@ __unregister_atfork (void *dso_handle)
 	    }
 
 	  next = (*handlers)->next;
-	  if (next)
+	  if (next != NULL)
 	    next->prev = prev;
 	  *handlers = next;
 	}

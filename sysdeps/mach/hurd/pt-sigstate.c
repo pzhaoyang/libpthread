@@ -37,10 +37,10 @@ __pthread_sigstate (struct __pthread *thread, int how,
 
   _hurd_sigstate_lock (ss);
 
-  if (oset)
+  if (oset != NULL)
     *oset = ss->blocked;
 
-  if (set)
+  if (set != NULL)
     {
       switch (how)
 	{

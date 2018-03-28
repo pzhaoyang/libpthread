@@ -46,7 +46,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
 #ifdef ALWAYS_TRACK_MUTEX_OWNER
 # ifndef NDEBUG
       self = _pthread_self ();
-      if (self)
+      if (self != NULL)
 	/* The main thread may take a lock before the library is fully
 	   initialized, in particular, before the main thread has a
 	   TCB.  */
@@ -57,7 +57,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
 # endif
 #endif
 
-      if (attr)
+      if (attr != NULL)
 	switch (attr->__mutex_type)
 	  {
 	  case PTHREAD_MUTEX_NORMAL:
@@ -115,11 +115,11 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
     }
 
 #if !defined(ALWAYS_TRACK_MUTEX_OWNER)
-  if (attr && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
+  if (attr != NULL && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
 #endif
     assert (mutex->__owner);
 
-  if (abstime && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
+  if (abstime != NULL && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
     return EINVAL;
 
   /* Add ourselves to the queue.  */
@@ -127,7 +127,7 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
   __pthread_spin_unlock (&mutex->__lock);
 
   /* Block the thread.  */
-  if (abstime)
+  if (abstime != NULL)
     err = __pthread_timedblock (self, abstime, CLOCK_REALTIME);
   else
     {
@@ -161,13 +161,13 @@ __pthread_mutex_timedlock_internal (struct __pthread_mutex *mutex,
     }
 
 #if !defined(ALWAYS_TRACK_MUTEX_OWNER)
-  if (attr && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
+  if (attr != NULL && attr->__mutex_type != PTHREAD_MUTEX_NORMAL)
 #endif
     {
       assert (mutex->__owner == self);
     }
 
-  if (attr)
+  if (attr != NULL)
     switch (attr->__mutex_type)
       {
       case PTHREAD_MUTEX_NORMAL:

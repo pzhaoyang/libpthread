@@ -69,7 +69,7 @@ __pthread_hurd_cond_timedwait_internal (pthread_cond_t *cond,
 
   assert (ss->intr_port == MACH_PORT_NULL);	/* Sanity check for signal bugs. */
 
-  if (abstime && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
+  if (abstime != NULL && (abstime->tv_nsec < 0 || abstime->tv_nsec >= 1000000000))
     return EINVAL;
 
   /* Atomically enqueue our thread on the condition variable's queue of
@@ -111,7 +111,7 @@ __pthread_hurd_cond_timedwait_internal (pthread_cond_t *cond,
       __pthread_mutex_unlock (mutex);
 
       /* Block the thread.  */
-      if (abstime)
+      if (abstime != NULL)
 	err = __pthread_timedblock (self, abstime, clock_id);
       else
 	{
@@ -153,7 +153,7 @@ __pthread_hurd_cond_timedwait_internal (pthread_cond_t *cond,
   ss->cancel = 0;
   __spin_unlock (&ss->lock);
 
-  if (mutex)
+  if (mutex != NULL)
     /* Reacquire the mutex and return.  */
     __pthread_mutex_lock (mutex);
 

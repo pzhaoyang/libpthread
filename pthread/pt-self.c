@@ -25,7 +25,7 @@ pthread_t
 __pthread_self (void)
 {
   struct __pthread *self = _pthread_self ();
-  assert (self);
+  assert (self != NULL);
 
   return self->thread;
 }

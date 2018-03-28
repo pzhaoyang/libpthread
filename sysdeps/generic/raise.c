@@ -32,7 +32,7 @@ raise (int signo)
      "the effect of the raise() function shall be equivalent to
      calling: pthread_kill(pthread_self(), sig);"  */
 
-  if (__pthread_kill && __pthread_threads)
+  if (__pthread_kill != NULL && __pthread_threads != NULL)
     {
       int err;
       err = __pthread_kill (__pthread_self (), signo);
