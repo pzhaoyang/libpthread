@@ -41,7 +41,7 @@ pthread_mutex_consistent (pthread_mutex_t *mtxp)
       ret = 0;
     }
 
-  return (ret);
+  return ret;
 }
 
 weak_alias (pthread_mutex_consistent, pthread_mutex_consistent_np)

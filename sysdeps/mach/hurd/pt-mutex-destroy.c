@@ -28,10 +28,10 @@ _pthread_mutex_destroy (pthread_mutex_t *mtxp)
 {
   atomic_read_barrier ();
   if (*(volatile unsigned int *) &mtxp->__lock != 0)
-    return (EBUSY);
+    return EBUSY;
 
   mtxp->__type = -1;
-  return (0);
+  return 0;
 }
 
 strong_alias (_pthread_mutex_destroy, pthread_mutex_destroy)

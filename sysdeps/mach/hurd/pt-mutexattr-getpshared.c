@@ -27,5 +27,5 @@ int
 pthread_mutexattr_getpshared (const pthread_mutexattr_t *attrp, int *outp)
 {
   *outp = attrp->__pshared;
-  return (0);
+  return 0;
 }

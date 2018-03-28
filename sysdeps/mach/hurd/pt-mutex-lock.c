@@ -41,10 +41,10 @@ __pthread_mutex_lock (pthread_mutex_t *mtxp)
       if (mtx_owned_p (mtxp, self, flags))
 	{
 	  if (__glibc_unlikely (mtxp->__cnt + 1 == 0))
-	    return (EAGAIN);
+	    return EAGAIN;
 
 	  ++mtxp->__cnt;
-	  return (ret);
+	  return ret;
 	}
 
       lll_lock (&mtxp->__lock, flags);
@@ -55,7 +55,7 @@ __pthread_mutex_lock (pthread_mutex_t *mtxp)
     case PT_MTX_ERRORCHECK:
       self = _pthread_self ();
       if (mtx_owned_p (mtxp, self, flags))
-	return (EDEADLK);
+	return EDEADLK;
 
       lll_lock (&mtxp->__lock, flags);
       mtx_set_owner (mtxp, self, flags);
@@ -73,7 +73,7 @@ __pthread_mutex_lock (pthread_mutex_t *mtxp)
       break;
     }
 
-  return (ret);
+  return ret;
 }
 
 strong_alias (__pthread_mutex_lock, _pthread_mutex_lock)

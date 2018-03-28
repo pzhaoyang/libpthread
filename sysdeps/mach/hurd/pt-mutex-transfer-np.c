@@ -30,9 +30,9 @@ __pthread_mutex_transfer_np (pthread_mutex_t *mtxp, pthread_t th)
   struct __pthread *pt = __pthread_getid (th);
 
   if (pt == NULL)
-    return (ESRCH);
+    return ESRCH;
   else if (pt == self)
-    return (0);
+    return 0;
 
   int ret = 0;
   int flags = mtxp->__flags & GSYNC_SHARED;
@@ -69,7 +69,7 @@ __pthread_mutex_transfer_np (pthread_mutex_t *mtxp, pthread_t th)
       ret = EINVAL;
     }
 
-  return (ret);
+  return ret;
 }
 
 weak_alias (__pthread_mutex_transfer_np, pthread_mutex_transfer_np)

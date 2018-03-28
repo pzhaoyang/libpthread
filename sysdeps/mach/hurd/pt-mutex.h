@@ -27,20 +27,20 @@
  * is bound in the function this is called from. */
 #define ROBUST_LOCK(self, mtxp, cb, ...)   \
   if (mtxp->__owner_id == NOTRECOVERABLE_ID)   \
-    return (ENOTRECOVERABLE);   \
+    return ENOTRECOVERABLE;   \
   else if (mtxp->__owner_id == self->thread &&   \
       __getpid () == (int)(mtxp->__lock & LLL_OWNER_MASK))   \
     {   \
       if (mtxp->__type == PT_MTX_RECURSIVE)   \
         {   \
           if (__glibc_unlikely (mtxp->__cnt + 1 == 0))   \
-            return (EAGAIN);   \
+            return EAGAIN;   \
           \
           ++mtxp->__cnt;   \
-          return (0);   \
+          return 0;   \
         }   \
       else if (mtxp->__type == PT_MTX_ERRORCHECK)   \
-        return (EDEADLK);   \
+        return EDEADLK;   \
     }   \
   \
   ret = cb (&mtxp->__lock, ##__VA_ARGS__);   \

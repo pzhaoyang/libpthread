@@ -42,7 +42,7 @@ __pthread_mutex_trylock (pthread_mutex_t *mtxp)
       if (mtx_owned_p (mtxp, self, mtxp->__flags))
 	{
 	  if (__glibc_unlikely (mtxp->__cnt + 1 == 0))
-	    return (EAGAIN);
+	    return EAGAIN;
 
 	  ++mtxp->__cnt;
 	  ret = 0;
@@ -77,7 +77,7 @@ __pthread_mutex_trylock (pthread_mutex_t *mtxp)
       break;
     }
 
-  return (ret);
+  return ret;
 }
 
 strong_alias (__pthread_mutex_trylock, _pthread_mutex_trylock)

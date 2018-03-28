@@ -49,7 +49,7 @@ _pthread_mutex_init (pthread_mutex_t *mtxp, const pthread_mutexattr_t *attrp)
   mtxp->__cnt = 0;
   mtxp->__lock = 0;
 
-  return (0);
+  return 0;
 }
 
 strong_alias (_pthread_mutex_init, pthread_mutex_init)

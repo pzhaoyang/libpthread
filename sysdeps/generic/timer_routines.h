@@ -33,15 +33,15 @@ thread_attr_compare (const pthread_attr_t * left, const pthread_attr_t * right)
   struct __pthread_attr *ileft = (struct __pthread_attr *) left;
   struct __pthread_attr *iright = (struct __pthread_attr *) right;
 
-  return (ileft->__schedparam.sched_priority
-	    == iright->__schedparam.sched_priority
-	  && ileft->__stackaddr == iright->__stackaddr
-	  && ileft->__stacksize == iright->__stacksize
-	  && ileft->__guardsize == iright->__guardsize
-	  && ileft->__detachstate == iright->__detachstate
-	  && ileft->__inheritsched == iright->__inheritsched
-	  && ileft->__contentionscope == iright->__contentionscope
-	  && ileft->__schedpolicy == iright->__schedpolicy);
+  return ileft->__schedparam.sched_priority
+	   == iright->__schedparam.sched_priority
+	 && ileft->__stackaddr == iright->__stackaddr
+	 && ileft->__stacksize == iright->__stacksize
+	 && ileft->__guardsize == iright->__guardsize
+	 && ileft->__detachstate == iright->__detachstate
+	 && ileft->__inheritsched == iright->__inheritsched
+	 && ileft->__contentionscope == iright->__contentionscope
+	 && ileft->__schedpolicy == iright->__schedpolicy;
 }
 
 #endif /* timer_routines.h */

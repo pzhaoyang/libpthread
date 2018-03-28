@@ -27,10 +27,10 @@ int
 pthread_mutexattr_setrobust (pthread_mutexattr_t *attrp, int robust)
 {
   if (robust != PTHREAD_MUTEX_ROBUST && robust != PTHREAD_MUTEX_STALLED)
-    return (EINVAL);
+    return EINVAL;
 
   attrp->__prioceiling |= robust;
-  return (0);
+  return 0;
 }
 
 weak_alias (pthread_mutexattr_setrobust, pthread_mutexattr_setrobust_np)

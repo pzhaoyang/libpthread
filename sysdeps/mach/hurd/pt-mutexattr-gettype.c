@@ -27,5 +27,5 @@ int
 pthread_mutexattr_gettype (const pthread_mutexattr_t *attrp, int *outp)
 {
   *outp = attrp->__mutex_type;
-  return (0);
+  return 0;
 }

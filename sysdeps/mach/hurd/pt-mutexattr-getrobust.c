@@ -28,7 +28,7 @@ pthread_mutexattr_getrobust (const pthread_mutexattr_t *attrp, int *outp)
 {
   *outp = (attrp->__prioceiling & PTHREAD_MUTEX_ROBUST) ?
       PTHREAD_MUTEX_ROBUST : PTHREAD_MUTEX_STALLED;
-  return (0);
+  return 0;
 }
 
 weak_alias (pthread_mutexattr_getrobust, pthread_mutexattr_getrobust_np)

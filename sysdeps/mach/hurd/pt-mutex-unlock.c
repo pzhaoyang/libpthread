@@ -84,7 +84,7 @@ __pthread_mutex_unlock (pthread_mutex_t *mtxp)
       break;
     }
 
-  return (ret);
+  return ret;
 }
 
 strong_alias (__pthread_mutex_unlock, _pthread_mutex_unlock)

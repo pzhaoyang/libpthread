@@ -28,7 +28,7 @@ pthread_mutexattr_setprioceiling (pthread_mutexattr_t *attrp, int cl)
 {
   (void) attrp;
   (void) cl;
-  return (ENOSYS);
+  return ENOSYS;
 }
 
 stub_warning (pthread_mutexattr_setprioceiling)

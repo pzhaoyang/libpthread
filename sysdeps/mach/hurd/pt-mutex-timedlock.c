@@ -40,7 +40,7 @@ pthread_mutex_timedlock (pthread_mutex_t *mtxp, const struct timespec *tsp)
       if (mtx_owned_p (mtxp, self, flags))
 	{
 	  if (__glibc_unlikely (mtxp->__cnt + 1 == 0))
-	    return (EAGAIN);
+	    return EAGAIN;
 
 	  ++mtxp->__cnt;
 	  ret = 0;
@@ -74,5 +74,5 @@ pthread_mutex_timedlock (pthread_mutex_t *mtxp, const struct timespec *tsp)
       break;
     }
 
-  return (ret);
+  return ret;
 }

@@ -29,7 +29,7 @@ pthread_mutex_setprioceiling (pthread_mutex_t *mtxp, int cl, int *prp)
   (void) mtxp;
   (void) cl;
   (void) prp;
-  return (ENOSYS);
+  return ENOSYS;
 }
 
 stub_warning (pthread_mutex_setprioceiling)

@@ -34,6 +34,6 @@ int
 __pthread_mutexattr_init (pthread_mutexattr_t *attrp)
 {
   *attrp = dfl_attr;
-  return (0);
+  return 0;
 }
 weak_alias (__pthread_mutexattr_init, pthread_mutexattr_init)
